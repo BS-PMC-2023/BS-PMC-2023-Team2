@@ -33,8 +33,12 @@ const LogIn : FC= () => {
   
     const handleSubmit = async () => {
       try {
+console.log(process.env.REACT_APP_URL);
+
+          // const res = await axios.post(
           const res = await axios.post(
-            `http://localhost:${process.env.REACT_APP_URL}/user/login`,
+            // `http://localhost:${process.env.REACT_APP_URL}/user/login`,
+            `http://localhost:4000/user/login`,
             {
               sceName: userParams.current.email,
               password: userParams.current.password,
