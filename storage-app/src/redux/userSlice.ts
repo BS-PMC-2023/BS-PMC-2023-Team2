@@ -20,7 +20,7 @@ export const userSlice = createSlice({
         state.name = action.payload.name;
         state.token = action.payload.token;
     },
-    LOGOUT: (state, action:PayloadAction<{}>) => {
+    LOGOUT: (state) => {
         state.token= "";
         state.name= "";
         localStorage.clear();
