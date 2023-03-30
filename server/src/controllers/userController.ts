@@ -1,9 +1,54 @@
 import { Request, Response, NextFunction } from "express";
-import User from "../models/User";
-import bcrypt from 'bcrypt';
-import jwt from 'jsonwebtoken';
+import Admin from "../models/Admin";
+import Student from "../models/Student";
+import Teacher from "../models/Teacher";
+import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
 import readXlsxFile from "read-excel-file";
 
+const LOGIN = async (req: Request, res: Response, next: NextFunction) => {
+  const admin = await Admin.findOne({ email: req.body.email });
+  if (!admin) {
+    //not admin
+    const student = await Student.findOne({ email: req.body.email });
+    if (!student) {
+      //not student
+      const teacher = await Teacher.findOne({ email: req.body.email });
+      if (!teacher) {
+        //not teacher
+        res.status(404).send("no user");
+      } else {
+        //teacher
 
 
-export {}
+      }
+    } else {
+      //student
+    }
+  } else {
+    //admin
+
+    const comparePassword = await bcrypt.compare(
+      req.body.password.toString(),
+      admin.password
+    );
+    if (!comparePassword) {
+      res.status(404).send("invalid password!");
+    } else {
+      jwt.sign(
+        { _id: admin._id, kind: "ADMIN" },
+        process.env.secretKey || "",
+        { expiresIn: "7 days" },
+        (err, token) => {
+          if (err) {
+            res.sendStatus(403);
+          } else {
+            res.json({ token: token, user: admin }).sendStatus(200);
+          }
+        }
+      );
+    }
+  }
+};
+
+export { LOGIN };
