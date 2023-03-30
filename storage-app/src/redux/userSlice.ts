@@ -1,5 +1,4 @@
 import { createSlice,PayloadAction } from "@reduxjs/toolkit";
-import {useEffect} from 'react'
 
 export interface IUser {
   token: string;
@@ -13,7 +12,7 @@ const initialState: IUser = {
   loading: false
 };
 
-export const userSlice: any = createSlice({
+export const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
