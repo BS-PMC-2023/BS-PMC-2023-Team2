@@ -8,11 +8,46 @@ export interface IPerson  {
 }
 
 export interface IStudent extends IPerson {
-    sceEmail:string,
+    sceName:string,
     year: number,
     priority: number
 }
 
 export interface ITeacher extends IPerson {
+    sceName:string,
     course: string
+}
+
+export interface IAdmin extends IPerson {
+    sceName: string  
+}
+
+export interface IItem {
+    serialNumber: string,
+    itemName: string,
+    condition: boolean, // true: works well, false: broken 
+    subItems: ISubItem[]
+}
+
+export interface ISubItem {
+    serialNumber: string,
+    itemName: string,
+    condition: boolean, // true: works well, false: broken 
+    connected: IItem
+}
+
+export interface IOrder {
+    name: string,
+    itemName: string,
+    DateFrom: Date,
+    DateTo: Date,
+    status: number // 0: pending, 1: accept, 2: reject
+}
+
+export interface IReservation {
+    student: IPerson,
+    item: IItem,
+    DateFrom: Date,
+    DateTo: Date,
+    status: boolean // true: delivered, false: returned
 }

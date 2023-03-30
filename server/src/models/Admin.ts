@@ -1,17 +1,16 @@
 import { Schema, model, Types } from "mongoose";
-import {ITeacher} from '../interfaces/interfaces'
+import {IAdmin} from '../interfaces/interfaces'
 
-const TeacherSchema = new Schema<ITeacher>({
+const AdminSchema = new Schema<IAdmin>({
     FullName: { type: String, required: true },
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
     phone: { type: String, required: true, unique: true },
     isAdmin: { type: Boolean,required: true },
     id: { type: String, required: true, unique: true},
-    course: { type: String, required: true},
     sceName: { type: String, required: true, unique: true}
 })
 
-const Teacher = model<ITeacher>('Teacher', TeacherSchema);
+const Admin = model<IAdmin>('Admin', AdminSchema);
 
-export default Teacher;
+export default Admin;
