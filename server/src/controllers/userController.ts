@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 import Admin from "../models/Admin";
 import Student from "../models/Student";
-import Teacher from "../models/Teacher";
+import Teacher from '../models/Teacher';
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import readXlsxFile from "read-excel-file";

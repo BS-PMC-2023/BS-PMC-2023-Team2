@@ -13,6 +13,6 @@ const StudentSchema = new Schema<IStudent>({
     priority: { type: Number, required: true }
 })
 
-const Student = model<IStudent>('Teacher', StudentSchema);
+const Student = model<IStudent>('Student', StudentSchema);
 
 export default Student;
