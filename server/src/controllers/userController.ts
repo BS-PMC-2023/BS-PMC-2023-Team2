@@ -7,13 +7,13 @@ import jwt from "jsonwebtoken";
 import readXlsxFile from "read-excel-file";
 
 const LOGIN = async (req: Request, res: Response, next: NextFunction) => {
-  const admin = await Admin.findOne({ email: req.body.email });
+  const admin = await Admin.findOne({ sceName: req.body.sceName });
   if (!admin) {
     //not admin
-    const student = await Student.findOne({ email: req.body.email });
+    const student = await Student.findOne({ sceName: req.body.sceName });
     if (!student) {
       //not student
-      const teacher = await Teacher.findOne({ email: req.body.email });
+      const teacher = await Teacher.findOne({ sceName: req.body.sceName });
       if (!teacher) {
         //not teacher
         res.status(404).send("no user");
@@ -70,4 +70,9 @@ const LOGIN = async (req: Request, res: Response, next: NextFunction) => {
   }
 };
 
-export { LOGIN };
+const getPass = async (req: Request, res: Response) => {
+    const pass = await bcrypt.hash(req.body.pass.toString(), 10);
+    res.send(pass)
+}
+
+export { LOGIN, getPass };
