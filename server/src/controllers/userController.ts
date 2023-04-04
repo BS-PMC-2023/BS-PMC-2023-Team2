@@ -43,6 +43,26 @@ const LOGIN = async (req: Request, res: Response, next: NextFunction) => {
       }
     } else {
       //student
+      const comparePassword = await bcrypt.compare(
+        req.body.password.toString(),
+        student.password
+      );
+      if (!comparePassword) {
+        res.status(404).send("invalid password!");
+      } else {
+        jwt.sign(
+          { _id: student._id , kind: "STUDENT"},
+          process.env.secretKey || "",
+          { expiresIn: "7 days" },
+          (err, token) => {
+            if (err) {
+              res.sendStatus(403);
+            } else {
+              res.json({ token: token, user: student }).sendStatus(200);
+            }
+          }
+        );
+      }
     }
   } else {
     //admin
