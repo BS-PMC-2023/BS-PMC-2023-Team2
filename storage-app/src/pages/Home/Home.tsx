@@ -5,7 +5,6 @@ import { IUser } from "../../redux/userSlice";
 import "./home.css";
 import * as XLSX from "xlsx";
 import axios from "axios";
-
 const Home: FC = ({}) => {
   // @ts-ignore
   const user: IUser = useAppSelector((state) => state.user);
