@@ -2,7 +2,7 @@ import { Schema, model, Types } from "mongoose";
 import {IOrder} from '../interfaces/interfaces'
 
 const OrderSchema = new Schema<IOrder>({
-    userID: {
+    userId: {
         type: Schema.Types.ObjectId, 
         required: true
     },
