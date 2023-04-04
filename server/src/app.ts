@@ -4,6 +4,7 @@ import mongoose from "mongoose";
 import dotenv from 'dotenv';
 import 'dotenv/config';
 import userRouter from './routers/userRouter'
+import orderRouter from './routers/orderRouter'
 
 const app:express.Application = express();
 
@@ -13,6 +14,7 @@ app.use(cors());
 
 //Routing
 app.use('/user', userRouter)
+app.use('/order', orderRouter)
 
 app.get('/', (req: Request, res: Response) => {
     res.send("ok")

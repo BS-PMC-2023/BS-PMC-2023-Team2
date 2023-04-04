@@ -1,3 +1,5 @@
+import { Types } from "mongoose";
+
 export interface IPerson  {
     FullName: string,
     id: string,
@@ -33,11 +35,11 @@ export interface ISubItem {
     serialNumber: string,
     itemName: string,
     condition: boolean, // true: works well, false: broken 
-    connected: IItem
+    connected: Types.ObjectId
 }
 
 export interface IOrder {
-    name: string,
+    userID: Types.ObjectId,
     itemName: string,
     DateFrom: Date,
     DateTo: Date,
@@ -45,8 +47,8 @@ export interface IOrder {
 }
 
 export interface IReservation {
-    student: IPerson,
-    item: IItem,
+    student: Types.ObjectId,
+    item: Types.ObjectId,
     DateFrom: Date,
     DateTo: Date,
     status: boolean // true: delivered, false: returned

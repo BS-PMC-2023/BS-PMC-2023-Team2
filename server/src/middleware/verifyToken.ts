@@ -3,13 +3,14 @@ import { Request, Response, NextFunction } from 'express';
 
 const verifyToken = async (req:Request, res:Response, next:NextFunction) => {
     const token = req.headers['token'];
+    
     try{
         if(token){
             //@ts-ignore
             const jwtRes = jwt.verify(token, process.env.secretKey)
 
             //@ts-ignore
-            req.userId = jwtRes._id;
+            req.body.userId = jwtRes._id;
             next();
         }
         else{
@@ -22,4 +23,4 @@ const verifyToken = async (req:Request, res:Response, next:NextFunction) => {
     }
 }
 
-export default {verifyToken};
+export default verifyToken;
