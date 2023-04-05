@@ -27,7 +27,6 @@ export interface IAdmin extends IPerson {
 export interface IItem {
     serialNumber: string,
     itemName: string,
-    kind: string,
     condition: boolean, // true: works well, false: broken 
     subItems: ISubItem[]
 }

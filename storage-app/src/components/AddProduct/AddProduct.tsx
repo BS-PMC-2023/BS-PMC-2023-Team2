@@ -1,37 +1,60 @@
 import React, { useState } from "react";
-import "./AddProduct.css"; 
+import "./AddProduct.css";
+import { log } from "console";
+import axios from "axios";
 
 interface IItem {
-    serialNumber: string;
-    itemName: string;
-    condition: boolean; // true: works well, false: broken 
-    //subItems: ISubItem[]
-    subItems: string;
+  serialNumber: string;
+  itemName: string;
+  condition: boolean; // true: works well, false: broken
+  kind: string;
+  // subItems: ISubItem[]
+  subItems: string;
 }
 
 const AddProduct = () => {
   const [product, setProduct] = useState<IItem>({
     serialNumber: "",
     itemName: "",
+    kind: "Camera",
     condition: true,
-    subItems: ""
+    subItems: "",
   });
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = event.target;
     setProduct({ ...product, [name]: value });
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    console.log(product);
-    
+  const handleSubmit = async () => {
+    try {
+      await axios.post(
+        `http://localhost:${process.env.REACT_APP_URL}/item/addNewItem`,
+        { product },
+        {
+          headers: {
+            token: localStorage.getItem("token"),
+          },
+        }
+      );
+    } catch (err) {
+      console.error("problem");
+    }
   };
 
   return (
     <div className="add-product">
       <h2>Add Product</h2>
-      <form onSubmit={handleSubmit}>
+      {/* <form onSubmit={handleSubmit}> */}
+        <label htmlFor="Kind">Kind:</label>
+        <select>
+          <option value="Camera">Camera</option>
+          <option value="Mic">Mic</option>
+          <option value="Ipad">Ipad</option>
+          <option value="Tripod">Tripod</option>
+        </select>
         <label htmlFor="itemName">Item Name:</label>
         <input
           type="text"
@@ -50,19 +73,13 @@ const AddProduct = () => {
           onChange={handleChange}
         />
 
-        <label htmlFor="condition">condition:</label>
+        <label htmlFor="condition">Condition:</label>
         <select>
-            <option value = "">True</option>
-            <option value = "">False</option>
+          <option value="">True</option>
+          <option value="">False</option>
         </select>
-        {/* <input 
-          type="radio"
-          id="condition"
-          name="condition"
-          onChange={handleChange}
-        /> */}
 
-        <label htmlFor="subItems">subItems:</label>
+        <label htmlFor="subItems">SubItems:</label>
         <input
           type="text"
           id="subItems"
@@ -71,10 +88,12 @@ const AddProduct = () => {
           onChange={handleChange}
         />
 
-        <button type="submit">Add Product</button>
-      </form>
+        <button type="submit" onClick={handleSubmit}>
+          Add Product
+        </button>
+      {/* </form> */}
     </div>
   );
-}
+};
 
 export default AddProduct;
