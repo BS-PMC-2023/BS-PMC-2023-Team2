@@ -47,8 +47,8 @@ export interface IOrder {
 }
 
 export interface IReservation {
-    student: Types.ObjectId,
-    item: Types.ObjectId,
+    student: IStudent,
+    item: IItem,
     DateFrom: Date,
     DateTo: Date,
     status: boolean // true: delivered, false: returned
