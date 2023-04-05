@@ -22,6 +22,10 @@ const makeOrder = async (req: Request, res: Response) => {
   }
 };
 
+const confirmOrder = async (req: Request, res: Response) => {
+  const { studentId, itemId, DateFrom, DateTo } = req.body;
+
+};
 
 
 export { makeOrder };
