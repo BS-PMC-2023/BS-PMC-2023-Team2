@@ -55,13 +55,7 @@ const AddProduct = () => {
             <option value = "">True</option>
             <option value = "">False</option>
         </select>
-        {/* <input 
-          type="radio"
-          id="condition"
-          name="condition"
-          onChange={handleChange}
-        /> */}
-
+        
         <label htmlFor="subItems">subItems:</label>
         <input
           type="text"
