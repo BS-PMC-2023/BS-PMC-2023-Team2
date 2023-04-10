@@ -2,6 +2,7 @@ import React from 'react'
 import './Admin.css'
 import AddProduct from '../../components/AddProduct/AddProduct';
 import Summery from '../../components/Summery/Summery';
+import Exl from '../../components/Exl/Exl';
 
 
 const Admin = () => {
@@ -10,6 +11,8 @@ const Admin = () => {
       <AddProduct />
       <br />
       <Summery />
+      <br />
+      <Exl />
     </div>
   )
 }

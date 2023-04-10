@@ -4,7 +4,7 @@ import Student from "../models/Student";
 import Teacher from '../models/Teacher';
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import readXlsxFile from "read-excel-file";
+import { IStudent } from "../interfaces/interfaces";
 
 const LOGIN = async (req: Request, res: Response, next: NextFunction) => {
   const admin = await Admin.findOne({ sceName: req.body.sceName });
@@ -95,4 +95,29 @@ const getPass = async (req: Request, res: Response) => {
     res.send(pass)
 }
 
-export { LOGIN, getPass };
+const addStudentsByExcel = async (req: Request, res: Response) => {
+  try {
+    const students = req.body.students;
+
+    if(!students){
+      throw new Error("error occurs");
+    }
+
+    let arrayStudent: IStudent[] = []
+    //@ts-ignore
+    for(let element:IStudent of students)  {
+    // students.forEach((element: IStudent) => {
+      element.password = element.id;
+      element.isAdmin = false;
+      element.priority = 2;
+
+      const student = new Student(element);
+      await student.save();
+    };
+    res.send(arrayStudent).status(200);
+  } catch (err) {
+    res.sendStatus(404);
+  }
+};
+
+export { LOGIN, getPass, addStudentsByExcel };

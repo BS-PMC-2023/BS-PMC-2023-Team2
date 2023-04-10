@@ -7,7 +7,7 @@ const Summery = () => {
 
     const handleButtonClick = () => {
         setShowInventory(!showInventory);
-      };
+    };
     
   return (
     <div className="inventory-summary">
