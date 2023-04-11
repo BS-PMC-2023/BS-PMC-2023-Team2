@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import "./AddProduct.css";
 import { log } from "console";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import Message from "../Message/Message";
 
 interface IItem {
   serialNumber: string;
@@ -13,6 +15,8 @@ interface IItem {
 }
 
 const AddProduct = () => {
+  const navigate = useNavigate();
+  const [wobble, setWobble] = useState(0);
   const [product, setProduct] = useState<IItem>({
     serialNumber: "",
     itemName: "",
@@ -39,6 +43,10 @@ const AddProduct = () => {
           },
         }
       );
+      setWobble(1);
+      setTimeout(() => {
+        navigate("/");
+      }, 6000);
     } catch (err) {
       console.error("problem");
     }
@@ -46,52 +54,50 @@ const AddProduct = () => {
 
   return (
     <div className="add-product">
-      <h2>Add Product</h2>
-      {/* <form onSubmit={handleSubmit}> */}
-        <label htmlFor="Kind">Kind:</label>
-        <select>
-          <option value="Camera">Camera</option>
-          <option value="Mic">Mic</option>
-          <option value="Ipad">Ipad</option>
-          <option value="Tripod">Tripod</option>
-        </select>
-        <label htmlFor="itemName">Item Name:</label>
-        <input
-          type="text"
-          id="itemName"
-          name="itemName"
-          value={product.itemName}
-          onChange={handleChange}
-        />
+      <Message wobble={wobble} setWobble={setWobble} />
+      <label htmlFor="Kind">Kind:</label>
+      <select>
+        <option value="Camera">Camera</option>
+        <option value="Mic">Mic</option>
+        <option value="Ipad">Ipad</option>
+        <option value="Tripod">Tripod</option>
+      </select>
+      <label htmlFor="itemName">Item Name:</label>
+      <input
+        type="text"
+        id="itemName"
+        name="itemName"
+        value={product.itemName}
+        onChange={handleChange}
+      />
 
-        <label htmlFor="serialNumber">Serial Number:</label>
-        <input
-          type="text"
-          id="serialNumber"
-          name="serialNumber"
-          value={product.serialNumber}
-          onChange={handleChange}
-        />
+      <label htmlFor="serialNumber">Serial Number:</label>
+      <input
+        type="text"
+        id="serialNumber"
+        name="serialNumber"
+        value={product.serialNumber}
+        onChange={handleChange}
+      />
 
-        <label htmlFor="condition">Condition:</label>
-        <select>
-          <option value="">True</option>
-          <option value="">False</option>
-        </select>
+      <label htmlFor="condition">Condition:</label>
+      <select>
+        <option value="">True</option>
+        <option value="">False</option>
+      </select>
 
-        <label htmlFor="subItems">SubItems:</label>
+      {/* <label htmlFor="subItems">SubItems:</label>
         <input
           type="text"
           id="subItems"
           name="subItems"
           value={product.subItems}
           onChange={handleChange}
-        />
+        /> */}
 
-        <button type="submit" onClick={handleSubmit}>
-          Add Product
-        </button>
-      {/* </form> */}
+      <button type="submit" onClick={handleSubmit}>
+        Add Product
+      </button>
     </div>
   );
 };
