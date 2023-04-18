@@ -12,7 +12,6 @@ const Summery = () => {
   return (
     <div className="inventory-summary">
         <h2>Inventory</h2>
-        <form>
             <button onClick={handleButtonClick}>Show Inventory</button>
             {showInventory && (
             <table>
@@ -30,7 +29,6 @@ const Summery = () => {
                 </tbody>
             </table>
             )}
-      </form>
     </div>
   )
 }
