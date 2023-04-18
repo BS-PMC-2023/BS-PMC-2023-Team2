@@ -1,0 +1,15 @@
+.inventory-summary {
+  border: 1px solid black;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.inventory-summary__item {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.inventory-summary__quantity {
+  font-size: 18px;
+}

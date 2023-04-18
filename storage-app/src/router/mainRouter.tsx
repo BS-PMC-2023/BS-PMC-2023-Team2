@@ -6,6 +6,7 @@ import MainPage from '../pages/MainPage/MainPage';
 import Student from '../pages/Student/Student';
 import Teacher from '../pages/Teacher/Teacher';
 import Admin from '../pages/Admin/Admin';
+import Exl from '../components/Exl/Exl';
 
 
 const MainRouter: FC = ({  }) => {
@@ -18,6 +19,7 @@ const MainRouter: FC = ({  }) => {
           <Route path="/Student" element={<Student />} />
           <Route path="/Teacher" element={<Teacher />} />
           <Route path="/Admin" element={<Admin />} />
+          <Route path="/Admin/Exl" element={<Admin />} />
           <Route path="*" element={<Home />}/>
         </Route>
     </Routes>
