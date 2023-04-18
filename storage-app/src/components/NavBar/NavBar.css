@@ -47,14 +47,14 @@
     background-color: transparent;
     background-repeat: no-repeat;
     border-radius: 30px;
-    border: 1px solid #a0cc3b;
+    border: 3px solid #a0cc3b;
     height: 35px;
     transition: 0.3s;
   }
   
   .btn:hover {
-    /* background-color: white; */
-    border: 1px solid #07591c;
+    background-color: inherit;
+    border: 3px solid #07591c;
     color: #1e6716;
   }
   

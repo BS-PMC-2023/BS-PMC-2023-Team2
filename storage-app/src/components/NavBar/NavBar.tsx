@@ -30,9 +30,9 @@ const NavBar = () => {
           onClick={() => navigate("/")}
         />
         <div className="buttons">
-          {user.name !== "" ? (
+          {user.token !== "" ? (
             <div>
-              <button className="btn" onClick={() => navigate('/MyStock')}>My Account</button>
+              {/* <button className="btn" onClick={() => navigate('/MyStock')}>My Account</button> */}
               <button className="btn" onClick={handleLogout}>
                 Log Out
               </button>

@@ -1,0 +1,109 @@
+.Header {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  font-display: row;
+  width: 100%;
+  height: 500px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* filter: brightness(80%);     */
+  background-image: url("https://img.freepik.com/free-photo/warehouse-workers-working-together-organizing-goods-distribution-market_342744-1532.jpg?w=1800&t=st=1680706417~exp=1680707017~hmac=de4b3476a4b41fdf6b4d040e055d34bb2ece72d60f82ce3656c47d629f9b27aa");
+}
+
+.HomeContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  left: 100px;
+  top: 30%;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  /* background-color: rgba(161, 161, 161, 0.103); */
+  width: 30%;
+  height: 200px;
+  color: white;
+  font-size: 22px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.graph {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+}
+
+.left > p {
+  margin: 5px;
+}
+
+.btnOrange:hover {
+    transform: scale(1.1);
+}
+
+.btnOrange {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 35px;
+  background-color: #a0cc3b;
+  color: #ffffff;
+  padding: 10px 20px;
+  font-size: 15px;
+  margin-top: 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bolder;
+  transition: 0.3s;
+}
+
+@media only screen and (max-width: 600px) {
+  .left {
+    display: flex;
+    flex-direction: column;
+    /* position: relative; */
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    /* width: 100%; */
+    height: 200px;
+    color: #fcfcfc;
+    font-size: 22px;
+  }
+  .newsSection {
+    flex-direction: column !important;
+    justify-content: center;
+    align-items: center;
+  }
+  .Header {
+    justify-content: center;
+  }
+  .graph {
+    width: 100%;
+  }
+  .newsSection {
+    gap: 20px;
+  }
+}
+
+.newsSection {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.headerButtons {
+  display: flex;
+  flex-direction: row;
+  gap: 25px;
+}

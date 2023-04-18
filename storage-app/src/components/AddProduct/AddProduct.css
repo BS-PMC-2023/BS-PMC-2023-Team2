@@ -1,39 +1,50 @@
 .add-product {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 50%;
-    margin: 0 auto;
-  }
-  
-  label {
-    margin-top: 1rem;
-    font-weight: bold;
-  }
-  
-  select,input,
-  textarea {
-    padding: 0.5rem;
-    border-radius: 0.25rem;
-    border: none;
-    margin-bottom: 1rem;
-    width: 100%;
-  }
-  
-  textarea {
-    resize: none;
-  }
-  
-  button {
-    background-color: blue;
-    color: white;
-    padding: 0.5rem;
-    border-radius: 0.25rem;
-    border: none;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: navy;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 50%;
+  margin: 0 auto;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px #b3b3b3;
+}
+
+label {
+  margin-top: 1rem;
+  font-weight: bold;
+}
+
+select,
+textarea {
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  border: none;
+  margin-bottom: 1rem;
+  width: 80%;
+}
+
+input {
+  border: 1px solid black;
+  /* padding: 0.5rem;x */
+  border-radius: 0.25rem;
+  background: #ffffff;
+  margin-bottom: 1rem;
+  width: 80%;
+}
+
+textarea {
+  resize: none;
+}
+
+button {
+  background-color: blue;
+  color: white;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: navy;
+}

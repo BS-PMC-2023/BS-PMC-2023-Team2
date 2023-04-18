@@ -42,13 +42,15 @@ const LogIn : FC= () => {
           );
           
           localStorage.setItem("token", res.data.token);
-          // localStorage.setItem("name", res.data.user.userName);
+          localStorage.setItem("name", res.data.user.userName);
+          localStorage.setItem("isAdmin", res.data.user.isAdmin ? 'true' : 'false');
           const redux_promiss = () => {
             return new Promise((resolve) => {
               dispatch(
                 LOGIN({
                   name: res.data.user.userName,
                   token: res.data.token,
+                  isAdmin: res.data.user.isAdmin ? 'true' : 'false'
                 })
               );
               resolve("resolved");
@@ -56,7 +58,7 @@ const LogIn : FC= () => {
           };
           await redux_promiss();
           if(res.data.user.isAdmin){
-            navigate("/");
+            navigate("/admin");
           }else{//not admin
             navigate("/");
           }
@@ -68,7 +70,7 @@ const LogIn : FC= () => {
     return (
       <div className="LoginContainer">
         <div id="login" className="login-form-container">
-          <header>{"login"}</header>
+          <header>{"Login"}</header>
           <fieldset>
             <div className="input-wrapper">
               <input
