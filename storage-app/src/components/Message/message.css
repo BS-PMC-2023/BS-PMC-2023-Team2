@@ -1,5 +1,5 @@
 .MsgC {
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     width: 100%;
@@ -10,6 +10,7 @@
 }
 
 .MsgC[wobble='1'] {
+    display: flex;
     animation: displayMessage 6s;
 }
 
