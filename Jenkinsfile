@@ -19,9 +19,14 @@ pipeline {
         // }
         stage('Install Dependencies') {            
             steps {
+                sh "node -v"
+                sh "npm -v"
                 sh "uname"
+                sh "curl -sL https://deb.nodesource.com/setup_14.x -o nodesource_setup.sh"
+                sh "bash nodesource_setup.sh"
+                    
 //                sh "apt-get update"
-                 sh "sudo apt-get install nodejs"
+//                 sh "sudo apt-get install nodejs"
 //                 sh "apt-get install npm"
 //                 sh 'npm install'
             }
