@@ -20,8 +20,8 @@ pipeline {
         stage('Install Dependencies') {            
             steps {
                 sh "uname"
-                sh "apt-get update"
-//                 sh "apt-get install nodejs"
+//                sh "apt-get update"
+                 sh "apt-get install nodejs"
 //                 sh "apt-get install npm"
 //                 sh 'npm install'
             }
