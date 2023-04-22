@@ -21,7 +21,7 @@ pipeline {
             steps {
                 sh "uname"
 //                sh "apt-get update"
-                 sh "apt-get install nodejs"
+                 sh "sudo apt-get install nodejs"
 //                 sh "apt-get install npm"
 //                 sh 'npm install'
             }
