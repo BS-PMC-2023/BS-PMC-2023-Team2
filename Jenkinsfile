@@ -17,12 +17,13 @@ pipeline {
         //         checkout([$class: 'GitSCM', branches: [[name: '*/master']], userRemoteConfigs: [[url: 'https://github.com/yourusername/your-nodejs-project.git']]])
         //     }
         // }
-        stage('Install Dependencies') {
-            
+        stage('Install Dependencies') {            
             steps {
-                sh "sudo apt-get install nodejs"
-                sh "sudo apt-get install npm"
-                sh 'npm install'
+                sh "uname"
+                sh "apt-get update"
+//                 sh "apt-get install nodejs"
+//                 sh "apt-get install npm"
+//                 sh 'npm install'
             }
         }
         stage('Run Tests') {
