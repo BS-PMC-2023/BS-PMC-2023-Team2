@@ -19,6 +19,7 @@ pipeline {
         // }
         stage('Install Dependencies') {            
             steps {
+                sh "ls"
                 sh "node -v"
                 sh "npm -v"
                 sh "uname"
