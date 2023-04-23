@@ -23,7 +23,7 @@ pipeline {
         // }
         stage('Install Dependencies') {            
             steps {
-                sh 'tree'
+                sh 'ls'
                  sh 'npm install'
             }
         }
