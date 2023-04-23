@@ -10,7 +10,11 @@
 // }
 
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'node:16-alpine'
+        }
+    }
     stages {
         // stage('Checkout') {
         //     steps {
@@ -18,11 +22,8 @@ pipeline {
         //     }
         // }
         stage('Install Dependencies') {            
-            steps {
-                   
-                sh "apt install nodejs"
-//                 sh "apt-get install npm"
-//                 sh 'npm install'
+            steps {                   
+                 sh 'npm install'
             }
         }
         stage('Run Tests') {
