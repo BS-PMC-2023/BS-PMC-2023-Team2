@@ -23,7 +23,7 @@ pipeline {
         // }
         stage('Install Dependencies') {            
             steps {
-                dir('/storage-app') {
+                dir('storage-app') {
                     sh 'ls'
                     sh 'npm install'
                 }
