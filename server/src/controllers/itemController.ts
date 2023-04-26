@@ -31,4 +31,14 @@ const getAllProducts =async (req: Request, res: Response) => {
   }
 }
 
-export {addNewItem, getAllProducts}
+const getFaultyProducts = async (req: Request, res: Response) => {
+  try {
+    const FaultyProducts = await Item.find({condition: false});
+
+    res.send({FaultyProducts: FaultyProducts}).status(200);
+  } catch (error) {
+    res.sendStatus(404);
+  }
+}
+
+export {addNewItem, getAllProducts, getFaultyProducts}

@@ -3,6 +3,7 @@ import './Admin.css'
 import AddProduct from '../../components/AddProduct/AddProduct';
 import Summery from '../../components/Summery/Summery';
 import Exl from '../../components/Exl/Exl';
+import FoultyItems from '../../components/FoultyItems/FoultyItems';
 
 
 const Admin = () => {
@@ -13,6 +14,8 @@ const Admin = () => {
       <Summery />
       <br />
       <Exl />
+      <br />
+      <FoultyItems />
     </div>
   )
 }
