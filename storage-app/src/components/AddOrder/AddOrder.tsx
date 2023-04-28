@@ -33,7 +33,7 @@ const AddOrder: React.FC = () => {
   return (
     <div className="add-order">
       <h2>Add Order</h2>
-      <form>
+      <div>
         <label>
           Item Type:
           <input type="text" value={type} onChange={handletypeChange} />
@@ -55,7 +55,7 @@ const AddOrder: React.FC = () => {
         </label>
         <br />
         <button type="submit">Order</button>
-      </form>
+      </div>
     </div>
   );
 };

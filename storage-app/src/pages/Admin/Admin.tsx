@@ -8,10 +8,14 @@ import Exl from '../../components/Exl/Exl';
 const Admin = () => {
   return (
     <div className="Box">
+      <h1>Welcome to the Admin page</h1>
+      <h2>To add product to the storage</h2>
       <AddProduct />
       <br />
+      <h2>To show the summery of the storage</h2>
       <Summery />
       <br />
+      
       <Exl />
       <br />
       

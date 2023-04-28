@@ -34,7 +34,7 @@ const AddOrderGroup: React.FC = () => {
   return (
     <div className="add-order">
       <h2>Add Order</h2>
-      <form>
+      <div>
         <label>
           Item Type:
           <input type="text" value={type} onChange={handletypeChange} />
@@ -48,6 +48,7 @@ const AddOrderGroup: React.FC = () => {
         <label>
           Order Manager
           <input type="text" value={group} onChange={handleGroup} />
+          <br />
           Group Members
           <input type="box" value={groupMember} onChange={handleGroupMember} />
         </label>
@@ -63,7 +64,7 @@ const AddOrderGroup: React.FC = () => {
         </label>
         <br />
         <button type="submit">Order</button>
-      </form>
+      </div>
     </div>
   );
 }
