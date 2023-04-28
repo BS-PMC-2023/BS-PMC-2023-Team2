@@ -13,6 +13,8 @@ const Admin = () => {
       <Summery />
       <br />
       <Exl />
+      <br />
+      
     </div>
   )
 }

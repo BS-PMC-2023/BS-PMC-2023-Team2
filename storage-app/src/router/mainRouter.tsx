@@ -7,6 +7,8 @@ import Student from '../pages/Student/Student';
 import Teacher from '../pages/Teacher/Teacher';
 import Admin from '../pages/Admin/Admin';
 import Exl from '../components/Exl/Exl';
+import AddOrder from '../components/AddOrder/AddOrder';
+import AddOrderGroup from '../components/AddOrderGroup/AddOrderGroup';
 
 
 const MainRouter: FC = ({  }) => {
@@ -17,6 +19,8 @@ const MainRouter: FC = ({  }) => {
           <Route index element={<Home />}/>
           <Route path="/loginsignup/:is" element={<LogIn />} />
           <Route path="/Student" element={<Student />} />
+          <Route path="/Student/AddOrder" element={<AddOrder />} />
+          <Route path="/Student/AddOrderGroup" element={<AddOrderGroup />} />
           <Route path="/Teacher" element={<Teacher />} />
           <Route path="/Admin" element={<Admin />} />
           <Route path="/Admin/Exl" element={<Admin />} />
