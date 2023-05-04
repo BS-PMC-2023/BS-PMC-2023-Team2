@@ -13,6 +13,7 @@ const Student = () => {
       <Link to="/Student/AddOrderGroup">
         <button>Group</button>
       </Link>
+    
     </div>
   )
 }

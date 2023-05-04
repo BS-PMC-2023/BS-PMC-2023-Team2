@@ -20,7 +20,7 @@ const AddProduct = () => {
   const [product, setProduct] = useState<IItem>({
     serialNumber: "",
     itemName: "",
-    kind: "Camera",
+    kind: "",
     condition: true,
     subItems: "",
   });
@@ -85,16 +85,7 @@ const AddProduct = () => {
         <option value="">True</option>
         <option value="">False</option>
       </select>
-
-      {/* <label htmlFor="subItems">SubItems:</label>
-        <input
-          type="text"
-          id="subItems"
-          name="subItems"
-          value={product.subItems}
-          onChange={handleChange}
-        /> */}
-
+      
       <button type="submit" onClick={handleSubmit}>
         Add Product
       </button>

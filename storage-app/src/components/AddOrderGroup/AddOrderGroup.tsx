@@ -35,15 +35,13 @@ const AddOrderGroup: React.FC = () => {
     <div className="add-order">
       <h2>Add Order</h2>
       <div>
-        <label>
-          Item Type:
-          <input type="text" value={type} onChange={handletypeChange} />
-        </label>
-        <br />
-        <label>
-          Item Name:
-          <input type="text" value={itemName} onChange={handleItemNameChange} />
-        </label>
+        <label htmlFor="Kind">Item Type:</label>
+        <select>
+          <option value="Camera" >Camera</option>
+          <option value="Mic">Mic</option>
+          <option value="Ipad">Ipad</option>
+          <option value="Tripod">Tripod</option>
+        </select>
         <br />
         <label>
           Order Manager

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './AddOrder.css';
+import Policy from '../Policy/Policy';
 
 interface Order {
   type: string;
@@ -9,18 +10,8 @@ interface Order {
 }
 
 const AddOrder: React.FC = () => {
-  const [type, settype] = useState('');
-  const [itemName, setItemName] = useState('');
   const [fromDate, setFromDate] = useState('');
   const [toDate, setToDate] = useState('');
-
-  const handletypeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    settype(event.target.value);
-  };
-
-  const handleItemNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setItemName(event.target.value);
-  };
 
   const handleFromDateChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setFromDate(event.target.value);
@@ -34,15 +25,13 @@ const AddOrder: React.FC = () => {
     <div className="add-order">
       <h2>Add Order</h2>
       <div>
-        <label>
-          Item Type:
-          <input type="text" value={type} onChange={handletypeChange} />
-        </label>
-        <br />
-        <label>
-          Item Name:
-          <input type="text" value={itemName} onChange={handleItemNameChange} />
-        </label>
+        <label htmlFor="Kind">Item Type:</label>
+        <select>
+          <option value="Camera" >Camera</option>
+          <option value="Mic">Mic</option>
+          <option value="Ipad">Ipad</option>
+          <option value="Tripod">Tripod</option>
+        </select>
         <br />
         <label>
           From Date:
@@ -54,7 +43,11 @@ const AddOrder: React.FC = () => {
           <input type="Date" value={toDate} onChange={handleToDateChange} />
         </label>
         <br />
-        <button type="submit">Order</button>
+        <button type="submit">Check Avilability</button>
+        <br />
+        <br />
+        <br />
+        <button><Policy /></button>
       </div>
     </div>
   );
