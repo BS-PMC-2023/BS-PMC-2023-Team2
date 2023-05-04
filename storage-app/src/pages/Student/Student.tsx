@@ -1,11 +1,18 @@
 import React from 'react'
 import './Student.css'
-import AddOrder from '../../components/AddOrder/AddOrder'
+import { Link } from "react-router-dom";
 
 const Student = () => {
+
   return (
     <div>
-      <AddOrder />
+      <h1>Welcome to the Order page</h1>
+      <Link to="/Student/AddOrder">
+        <button>Personal</button>
+      </Link>
+      <Link to="/Student/AddOrderGroup">
+        <button>Group</button>
+      </Link>
     </div>
   )
 }

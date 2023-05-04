@@ -1,16 +1,12 @@
 import React, { useState } from 'react';
-import './AddOrder.css';
+import './AddOrderGroup.css';
 
-interface Order {
-  type: string;
-  itemName: string;
-  fromDate: string;
-  toDate: string;
-}
 
-const AddOrder: React.FC = () => {
+const AddOrderGroup: React.FC = () => {
   const [type, settype] = useState('');
   const [itemName, setItemName] = useState('');
+  const [group, setGroup] = useState('');
+  const [groupMember, setGroupMember] = useState('');
   const [fromDate, setFromDate] = useState('');
   const [toDate, setToDate] = useState('');
 
@@ -21,7 +17,12 @@ const AddOrder: React.FC = () => {
   const handleItemNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setItemName(event.target.value);
   };
-
+  const handleGroup = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setGroup(event.target.value);
+  };
+  const handleGroupMember = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setGroupMember(event.target.value);
+  };
   const handleFromDateChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setFromDate(event.target.value);
   };
@@ -45,6 +46,14 @@ const AddOrder: React.FC = () => {
         </label>
         <br />
         <label>
+          Order Manager
+          <input type="text" value={group} onChange={handleGroup} />
+          <br />
+          Group Members
+          <input type="box" value={groupMember} onChange={handleGroupMember} />
+        </label>
+        <br />
+        <label>
           From Date:
           <input type="Date" value={fromDate} onChange={handleFromDateChange} />
         </label>
@@ -58,6 +67,8 @@ const AddOrder: React.FC = () => {
       </div>
     </div>
   );
-};
+}
 
-export default AddOrder;
+export default AddOrderGroup
+
+
