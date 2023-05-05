@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import Item from "../models/Item";
+import Reservation from "../models/Reservation";
 
 const addNewItem = async (req: Request, res: Response) => {
   
@@ -41,4 +42,17 @@ const getFaultyProducts = async (req: Request, res: Response) => {
   }
 }
 
-export {addNewItem, getAllProducts, getFaultyProducts}
+const getAvailableItems = async (req: Request, res: Response) => {
+  try {
+    const reservations = await Reservation.find()
+    const items = await Item.find()
+    console.log(items);
+    res.sendStatus(200)
+    
+  } catch (error: any) {
+    console.log(error.message);
+    res.sendStatus(404);
+  }
+}
+
+export {addNewItem, getAllProducts, getFaultyProducts, getAvailableItems}

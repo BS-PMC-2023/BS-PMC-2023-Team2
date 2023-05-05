@@ -4,6 +4,7 @@ import { IUser } from "../../redux/userSlice";
 import "./home.css";
 import { useNavigate } from "react-router-dom";
 import Exl from "../../components/Exl/Exl";
+import AddWatingList from "../../components/AddWatingList/AddWatingList";
 
 const Home: FC = ({}) => {
   // @ts-ignore
@@ -51,6 +52,7 @@ const Home: FC = ({}) => {
           </div>
         </div>
       </div>
+      <AddWatingList />
     </div>
   );
 };

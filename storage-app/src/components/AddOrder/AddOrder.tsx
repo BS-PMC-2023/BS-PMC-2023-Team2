@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
-import './AddOrder.css';
-import Policy from '../Policy/Policy';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import "./AddOrder.css";
+import Policy from "../Policy/Policy";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import Message from '../Message/Message';
-
-
+import './AddOrder.css'
+import {IItem} from '../../interfaces/interfaces'
 interface Order {
   type: string;
   itemName: string;
@@ -16,7 +15,7 @@ interface Order {
 const AddOrder: React.FC = () => {
   const navigate = useNavigate();
   const [wobble, setWobble] = useState(0);
-
+  const [AvilabilityP, setAvilabilityP] = useState<IItem[]>([])
   const [product, setProduct] = useState<Order>({
     type: "",
     itemName: "",
@@ -24,9 +23,7 @@ const AddOrder: React.FC = () => {
     toDate: "",
   });
 
-  const handleChange = (
-    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
+  const handleChange = (event: any) => {
     const { name, value } = event.target;
     setProduct({ ...product, [name]: value });
   };
@@ -34,7 +31,7 @@ const AddOrder: React.FC = () => {
   const handleSubmit = async () => {
     try {
       await axios.post(
-        `http://localhost:${process.env.REACT_APP_URL}/item/addNewItem`,
+        `http://localhost:${process.env.REACT_APP_URL}/item/getAvailableItems`,
         { product },
         {
           headers: {
@@ -53,28 +50,43 @@ const AddOrder: React.FC = () => {
 
   return (
     <div className="add-order">
-      <Message wobble={wobble} setWobble={setWobble} />
       <h2>Add Order</h2>
       <div>
         <label htmlFor="Kind">Item Type:</label>
-        <select>
-          <option value="Camera" >Camera</option>
+
+        <select onChange={handleChange} value={product.type} name="type">
+          <option value="Camera">Camera</option>
           <option value="Mic">Mic</option>
           <option value="Ipad">Ipad</option>
           <option value="Tripod">Tripod</option>
         </select>
         <br />
-        <label>
-          From Date:
-          <input type="Date" value={product.fromDate} onChange={handleChange} />
-        </label>
+        <div className="dates">
+          <label>
+            From Date:
+            <input
+              type="Date"
+              value={product.fromDate}
+              name="fromDate"
+              onChange={handleChange}
+            />
+          </label>
+          <br />
+          <label>
+            To Date:
+            <input
+              type="Date"
+              min={product.fromDate}
+              value={product.toDate}
+              name="toDate"
+              onChange={handleChange}
+            />
+          </label>
+        </div>
         <br />
-        <label>
-          To Date:
-          <input type="Date" value={product.toDate} onChange={handleChange} />
-        </label>
-        <br />
-        <button type="submit" onClick={handleSubmit}>Check Avilability</button>
+        <button type="submit" onClick={handleSubmit}>
+          Check Avilability
+        </button>
         <br />
         <br />
         <br />

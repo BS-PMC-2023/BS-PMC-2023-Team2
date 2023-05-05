@@ -3,9 +3,9 @@ import cors from "cors";
 import mongoose from "mongoose";
 import dotenv from 'dotenv';
 import 'dotenv/config';
-import userRouter from './routers/userRouter'
-import orderRouter from './routers/orderRouter'
-import itemRouter from './routers/itemRouter'
+import userRouter from './src/routers/userRouter'
+import orderRouter from './src/routers/orderRouter'
+import itemRouter from './src/routers/itemRouter'
 
 const app:express.Application = express();
 

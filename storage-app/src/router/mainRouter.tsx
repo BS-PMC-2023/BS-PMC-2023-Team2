@@ -9,6 +9,7 @@ import Admin from '../pages/Admin/Admin';
 import Exl from '../components/Exl/Exl';
 import AddOrder from '../components/AddOrder/AddOrder';
 import AddOrderGroup from '../components/AddOrderGroup/AddOrderGroup';
+import Error from "../pages/404/Error";
 
 const MainRouter: FC = ({}) => {
   return (
@@ -25,7 +26,7 @@ const MainRouter: FC = ({}) => {
             <Route index element={<Admin />} />
             <Route path="Exl" element={<Admin />} />
           </Route>
-          <Route path="*" element={<Home />} />
+          <Route path="*" element={<Error />} />
         </Route>
       </Routes>
     </BrowserRouter>

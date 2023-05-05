@@ -5,19 +5,16 @@
   margin-top: 20px;
 }
 
+.dates {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
 .add-order h2 {
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 10px;
-}
-
-.add-order div {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border: 1px solid #ccc;
-  padding: 20px;
-  border-radius: 5px;
 }
 
 .add-order div label {
