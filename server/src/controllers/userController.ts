@@ -7,6 +7,8 @@ import jwt from "jsonwebtoken";
 import { IStudent } from "../interfaces/interfaces";
 
 const LOGIN = async (req: Request, res: Response, next: NextFunction) => {
+  console.log(req.body);
+  
   const admin = await Admin.findOne({ sceName: req.body.sceName });
   if (!admin) {
     //not admin
@@ -94,6 +96,10 @@ const getPass = async (req: Request, res: Response) => {
     const pass = await bcrypt.hash(req.body.pass.toString(), 10);
     res.send(pass)
 }
+const getPas = async (toSctipt: string) => {    
+    const pass = await bcrypt.hash(toSctipt.toString(), 10);
+    return (pass)
+}
 
 const addStudentsByExcel = async (req: Request, res: Response) => {
   try {
@@ -104,18 +110,23 @@ const addStudentsByExcel = async (req: Request, res: Response) => {
     }
 
     let arrayStudent: IStudent[] = []
-    //@ts-ignore
+    // @ts-ignore
     for(let element:IStudent of students)  {
     // students.forEach((element: IStudent) => {
-      element.password = element.id;
+      element.password = await getPas(element.id);
       element.isAdmin = false;
       element.priority = 2;
 
       const student = new Student(element);
+      console.log(student);
+      
+      arrayStudent.push(student);
       await student.save();
     };
     res.send(arrayStudent).status(200);
   } catch (err) {
+    console.log(err);
+  
     res.sendStatus(404);
   }
 };

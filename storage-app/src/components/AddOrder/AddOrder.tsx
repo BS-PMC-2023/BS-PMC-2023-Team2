@@ -3,11 +3,11 @@ import "./AddOrder.css";
 import Policy from "../Policy/Policy";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import './AddOrder.css'
-import {IItem} from '../../interfaces/interfaces'
+import "./AddOrder.css";
+import { IItem } from "../../interfaces/interfaces";
+import { log } from "console";
 interface Order {
   type: string;
-  itemName: string;
   fromDate: string;
   toDate: string;
 }
@@ -15,34 +15,30 @@ interface Order {
 const AddOrder: React.FC = () => {
   const navigate = useNavigate();
   const [wobble, setWobble] = useState(0);
-  const [AvilabilityP, setAvilabilityP] = useState<IItem[]>([])
+  const [AvilabilityP, setAvilabilityP] = useState<IItem[]>([]);
   const [product, setProduct] = useState<Order>({
-    type: "",
-    itemName: "",
+    type: "Camera",
     fromDate: "",
     toDate: "",
   });
 
   const handleChange = (event: any) => {
     const { name, value } = event.target;
+
     setProduct({ ...product, [name]: value });
   };
 
   const handleSubmit = async () => {
     try {
-      await axios.post(
+      const avlItems = await axios.get(
         `http://localhost:${process.env.REACT_APP_URL}/item/getAvailableItems`,
-        { product },
-        {
-          headers: {
-            token: localStorage.getItem("token"),
-          },
-        }
+        { params: { product: product } }
       );
-      setWobble(1);
-      setTimeout(() => {
-        navigate("/");
-      }, 6000);
+      setAvilabilityP(avlItems.data.items);
+
+      // setTimeout(() => {
+      //   navigate("/");
+      // }, 6000);
     } catch (err) {
       console.error("problem");
     }
@@ -87,6 +83,16 @@ const AddOrder: React.FC = () => {
         <button type="submit" onClick={handleSubmit}>
           Check Avilability
         </button>
+
+        <span className="prodMap">
+          {AvilabilityP &&
+            AvilabilityP.map((prod) => (
+              <div className="prodCont">
+                <p>{prod.kind}</p>
+                <p>{prod.itemName}</p>
+              </div>
+            ))}
+        </span>
         <br />
         <br />
         <br />

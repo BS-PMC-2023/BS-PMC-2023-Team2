@@ -1,11 +1,11 @@
 import { Router } from "express";
-import {LOGIN, getPass} from '../controllers/userController'
+import {LOGIN, getPass, addStudentsByExcel} from '../controllers/userController'
 
 const router = Router();
 
 router.post('/login', LOGIN)
 
-// router.post('/addStudents', REGISTER)
+router.post('/addStudents', addStudentsByExcel)
 
 router.post('/getPass', getPass)
 
