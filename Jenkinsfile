@@ -30,8 +30,11 @@ pipeline {
             }
         }
         stage('Run Tests') {
-            steps {
-                sh 'npm test'
+             steps {
+                dir('storage-app') {
+                    sh 'ls'
+                    sh 'npm run test'
+                }
             }
         }
         stage('Build and Deploy') {

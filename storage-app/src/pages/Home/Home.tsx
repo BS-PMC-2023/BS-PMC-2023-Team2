@@ -3,6 +3,7 @@ import { useAppSelector } from "../../redux/Store";
 import { IUser } from "../../redux/userSlice";
 import "./home.css";
 import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import Exl from "../../components/Exl/Exl";
 import AddWatingList from "../../components/AddWatingList/AddWatingList";
 
