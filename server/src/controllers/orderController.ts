@@ -57,16 +57,18 @@ const AdminGetOrders = async (req: Request, res: Response) => {
 };
 
 const makeOrder = async (req: Request, res: Response) => {
-  const { userId, itemName, DateFrom, DateTo } = req.body;
+  const { itemName, DateFrom, DateTo } = req.body.obj;
 
   try {
+    
     const newOrder = new Order({
-      userId: new Types.ObjectId(userId),
+      userId: new Types.ObjectId(req.body.userId),
       itemName: itemName,
       DateFrom: new Date(DateFrom),
       DateTo: new Date(DateTo),
       status: 0,
     });
+    // console.log(newOrder);
 
     await newOrder.save();
 

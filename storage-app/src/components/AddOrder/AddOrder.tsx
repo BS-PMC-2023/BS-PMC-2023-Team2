@@ -6,6 +6,8 @@ import axios from "axios";
 import "./AddOrder.css";
 import { IItem } from "../../interfaces/interfaces";
 import { log } from "console";
+import { useSelector } from "react-redux";
+import { useAppSelector } from "../../redux/Store";
 interface Order {
   type: string;
   fromDate: string;
@@ -13,6 +15,7 @@ interface Order {
 }
 
 const AddOrder: React.FC = () => {
+  const user = useAppSelector(state => state.user)
   const navigate = useNavigate();
   const [wobble, setWobble] = useState(0);
   const [AvilabilityP, setAvilabilityP] = useState<IItem[]>([]);
@@ -44,6 +47,25 @@ const AddOrder: React.FC = () => {
     }
   };
 
+  const handleOrder = async (prod: any) => {
+    try {
+      const obj = {
+        itemName: prod.kind,
+        DateFrom: product.fromDate,
+        DateTo: product.toDate,
+      }
+      const order = await axios.post(`http://localhost:${process.env.REACT_APP_URL}/order/makeOrder`, {
+        obj
+      }, { headers: {
+        token: user.token
+      }})
+      alert("The Order Has Received 👍🏼")
+      navigate('/Student/studentGetOrders')
+    } catch (error: any) {
+      console.log(error.message);
+    }
+  }
+
   const waitingList = async () => {
     alert("we added the order to the waiting list");
 
@@ -52,7 +74,7 @@ const AddOrder: React.FC = () => {
 
   return (
     <div className="add-order">
-      <h2>Add Order 📩</h2>
+      <h2>Make a Reservation 📩</h2>
       <div>
         <span className="Updates">
           <label htmlFor="Kind">Item Type:</label>
@@ -95,7 +117,7 @@ const AddOrder: React.FC = () => {
         <span className="prodMap">
           {AvilabilityP &&
             AvilabilityP.map((prod) => (
-              <div className="prodCont">
+              <div className="prodCont" onClick={() => handleOrder(prod)}>
                 <p>{prod.kind}</p>
                 <p>{prod.itemName}</p>
               </div>
