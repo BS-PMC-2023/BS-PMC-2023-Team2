@@ -1,0 +1,31 @@
+.adminCont {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.HeaderA {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-display: row;
+    width: 100%;
+    height: 500px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* filter: brightness(80%);     */
+    background-image: url("https://img.freepik.com/free-photo/handsome-business-man-engineer-hard-hat-building_1303-21167.jpg?w=1800&t=st=1683488637~exp=1683489237~hmac=14676957513934043d0687cd599576b01dd86ea0850ec6223b2642f47ee818a3");
+}
+
+.btnOrange {
+    width: 20%;
+}
+
+.headerButtonsA {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 500px;
+    gap: 10px;
+}
