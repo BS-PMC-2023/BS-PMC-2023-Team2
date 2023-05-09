@@ -34,7 +34,7 @@ const AddWatingList: React.FC = () => {
 
     return (
         <div className="add-order">
-            <h2>Waiting List</h2>
+            <h2>Waiting List:</h2>
             <div>
                 <label>
                     Teacher Name:

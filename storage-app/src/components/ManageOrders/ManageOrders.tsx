@@ -7,7 +7,7 @@ const ManageOrders: FC = ({}) => {
 
   useEffect(() => {
     const getData = async () => {
-      const ord = await axios.get(
+      const ord:any = await axios.get(
         `http://localhost:${process.env.REACT_APP_URL}/order/AdminGetOrders`
       );
       console.log(ord.data);
