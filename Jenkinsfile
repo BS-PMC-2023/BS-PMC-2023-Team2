@@ -38,17 +38,11 @@ pipeline {
             }
         }
         stage('Build and Deploy') {
-//             when {
-//                 branch 'master'
-//             }
-//             steps {
-//                 sh 'npm run build'
-//             }
-                         steps {
-                dir('storage-app') {
-                    sh 'ls'
-                    sh 'npm run build'
-                }
+            when {
+                branch 'master'
+            }
+            steps {
+                sh 'npm run build'
             }
         }
         }
