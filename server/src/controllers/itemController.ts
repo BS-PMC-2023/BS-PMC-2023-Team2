@@ -4,14 +4,13 @@ import Reservation from "../models/Reservation";
 import { IReservation } from "../interfaces/interfaces";
 
 const addNewItem = async (req: Request, res: Response) => {
-  try {
+  try {    
     const { serialNumber, itemName, condition, kind } = req.body.product;
-
     const newItem = new Item({
       serialNumber: serialNumber,
       itemName: itemName,
       kind: kind,
-      condition: condition,
+      condition: condition == 1 ? false : true,
     });
 
     await newItem.save();

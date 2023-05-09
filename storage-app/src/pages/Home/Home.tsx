@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useEffect } from "react";
 import { useAppSelector } from "../../redux/Store";
 import { IUser } from "../../redux/userSlice";
 import "./home.css";
@@ -9,6 +9,12 @@ const Home: FC = ({}) => {
   const user: IUser = useAppSelector((state) => state.user);
   const navigate = useNavigate();
 
+  useEffect(() => {
+    if(user.isAdmin != 'false') {
+      navigate('/admin');
+    }
+  }, [])
+
   return (
     <div>
       <div className="Header">
@@ -16,7 +22,6 @@ const Home: FC = ({}) => {
           <p>Your Way To</p>
           <p>Order Products</p>
           <div className="headerButtons">
-            {user.isAdmin == "false" ? (
               <>
                 <span
                   className="btnOrange"
@@ -31,27 +36,10 @@ const Home: FC = ({}) => {
                   Your Orders
                 </span>
               </>
-            ) : (
-              <>
-                <span
-                  className="btnOrange"
-                  onClick={() => navigate("/Student")}
-                >
-                  see orders
-                </span>
-                <span
-                  className="btnOrange"
-                  onClick={() => navigate("/admin")}
-                >
-                  add Products
-                </span>
-              </>
-            )}
           </div>
         </div>
       </div>
       <Outlet />
-      {/* <AddWatingList /> */}
     </div>
   );
 };
