@@ -5,10 +5,54 @@
   margin-top: 20px;
 }
 
+.prodMap {
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
+  gap: 20px;
+}
+
+.WaitingList {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  margin-top: 20px;
+  background-color: #f1f1f1;
+  font-weight: 700;
+  justify-content: flex-start;
+  border: 1px solid rgb(198, 198, 198);
+  border-radius: 5px;
+  padding: 10px;
+  width: 100%;
+  gap: 15px;
+}
+
+.prodCont {
+  color: #fff;
+  background-color: #a0cc3b;
+  cursor: pointer;
+  transition: 200ms;
+}
+
+.prodCont:hover {
+  box-shadow: 1px 1px 40px rgba(186, 186, 186, 0.78);
+  transform: scale(1.1);
+}
+
 .dates {
   display: flex;
   flex-direction: row;
+  align-items: center;
+  justify-content: center;
   width: 100%;
+}
+
+.Updates {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 40%;
 }
 
 .add-order h2 {

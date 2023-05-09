@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import { useAppSelector } from "../../redux/Store";
 import { IUser } from "../../redux/userSlice";
 import "./home.css";
-import { useNavigate } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import Exl from "../../components/Exl/Exl";
 import AddWatingList from "../../components/AddWatingList/AddWatingList";
 
@@ -22,13 +22,13 @@ const Home: FC = ({}) => {
               <>
                 <span
                   className="btnOrange"
-                  onClick={() => navigate("/Student")}
+                  onClick={() => navigate("/Student/addOrder")}
                 >
                   Make Order
                 </span>
                 <span
                   className="btnOrange"
-                  onClick={() => navigate("/Student")}
+                  onClick={() => navigate("/Student/studentGetOrders")}
                 >
                   Your Orders
                 </span>
@@ -52,7 +52,8 @@ const Home: FC = ({}) => {
           </div>
         </div>
       </div>
-      <AddWatingList />
+      <Outlet />
+      {/* <AddWatingList /> */}
     </div>
   );
 };

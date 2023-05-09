@@ -32,7 +32,6 @@ const NavBar = () => {
         <div className="buttons">
           {user.token !== "" ? (
             <div>
-              {/* <button className="btn" onClick={() => navigate('/MyStock')}>My Account</button> */}
               <button className="btn" onClick={handleLogout}>
                 Log Out
               </button>

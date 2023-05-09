@@ -44,20 +44,28 @@ const AddOrder: React.FC = () => {
     }
   };
 
+  const waitingList = async () => {
+    alert("we added the order to the waiting list");
+
+    navigate("/student");
+  };
+
   return (
     <div className="add-order">
-      <h2>Add Order</h2>
+      <h2>Add Order 📩</h2>
       <div>
-        <label htmlFor="Kind">Item Type:</label>
+        <span className="Updates">
+          <label htmlFor="Kind">Item Type:</label>
 
-        <select onChange={handleChange} value={product.type} name="type">
-          <option value="Camera">Camera</option>
-          <option value="Mic">Mic</option>
-          <option value="Ipad">Ipad</option>
-          <option value="Tripod">Tripod</option>
-        </select>
+          <select onChange={handleChange} value={product.type} name="type">
+            <option value="Camera">Camera</option>
+            <option value="Mic">Mic</option>
+            <option value="Ipad">Ipad</option>
+            <option value="Tripod">Tripod</option>
+          </select>
+        </span>
         <br />
-        <div className="dates">
+        <span className="dates">
           <label>
             From Date:
             <input
@@ -78,7 +86,7 @@ const AddOrder: React.FC = () => {
               onChange={handleChange}
             />
           </label>
-        </div>
+        </span>
         <br />
         <button type="submit" onClick={handleSubmit}>
           Check Avilability
@@ -94,7 +102,14 @@ const AddOrder: React.FC = () => {
             ))}
         </span>
         <br />
-        <br />
+        {AvilabilityP && (
+          <span className="WaitingList">
+            <p>didn't find what you look for? 🤔</p>
+            <button type="submit" onClick={waitingList}>
+              Enter To Waiting list 📋
+            </button>
+          </span>
+        )}
         <br />
         <Policy />
       </div>
