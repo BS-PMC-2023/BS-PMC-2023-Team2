@@ -30,7 +30,7 @@ render(
   });
 
   it('renders the true condition', () => {
-    expect(screen.getByDisplayValue('True')).toBeInTheDocument();
+    expect(screen.getByDisplayValue('OK')).toBeInTheDocument();
   });
 
   it('renders the submit button', () => {

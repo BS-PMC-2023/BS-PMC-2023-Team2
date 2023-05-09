@@ -40,6 +40,7 @@ export interface ISubItem {
 }
 
 export interface IOrder {
+    _id: Types.ObjectId,
     userId: Types.ObjectId,
     itemName: string,
     DateFrom: Date,

@@ -9,7 +9,7 @@ import AddOrder from '../components/AddOrder/AddOrder';
 jest.mock('axios');
 
 
-describe('Login', () => {
+describe('AddOrder', () => {
     beforeEach(() => {
       (axios.post as jest.Mock).mockResolvedValue({
         data: {
@@ -26,7 +26,7 @@ render(
       <BrowserRouter>
         <AddOrder/>
       </BrowserRouter>
-    </Provider >
+    </Provider>
   );
 });
 

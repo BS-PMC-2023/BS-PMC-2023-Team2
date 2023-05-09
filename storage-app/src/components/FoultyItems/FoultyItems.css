@@ -19,7 +19,7 @@
 .card {
     width: 180px;
     height: 120px;
-    background: rgb(103, 225, 255);
+    background: #a0cc3b;
     transition: all 0.4s;
     border-radius: 10px;
     font-size: 30px;
@@ -30,7 +30,7 @@
     border-radius: 15px;
     cursor: pointer;
     transform: scale(1.2);
-    background: rgb(103, 151, 255);
+    background: #769d1b;
   }
   
   .first-content {
