@@ -33,7 +33,7 @@ pipeline {
              steps {
                 dir('storage-app') {
                     sh 'ls'
-                    sh 'npm run test -- --coverage --watchAll'
+                    sh 'npm run test -- --coverage --watchAll --testResultsProcessor=jest-junit'
                 }
             }
                         post {
