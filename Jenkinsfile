@@ -33,7 +33,7 @@ pipeline {
              steps {
                 dir('storage-app') {
                     sh 'ls'
-                    sh 'CI=true npm run test -- --coverage --watchAll'
+                    sh 'npm test -- --coverage'
                 }
             }
         }
