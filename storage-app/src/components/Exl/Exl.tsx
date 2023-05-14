@@ -37,7 +37,8 @@ const Exl = () => {
   };
 
   return (
-    <div>
+    <div style={{display: 'flex', margin: '20px',flexDirection: 'column', gap: '10px'}}>
+      <h2>select exel file with students you wish to add:</h2>
       <input type="file" id="input" onChange={(e) => uploadFiles(e)} />
     </div>
   );

@@ -5,8 +5,7 @@ import userEvent from '@testing-library/user-event';
 import { Provider } from "react-redux";
 import { store } from "../redux/Store";
 import axios from 'axios';
-import AddOrder from '../components/AddOrder/AddOrder';
-import AddOrderGroup from '../components/AddOrderGroup/AddOrderGroup';
+import Policy from '../components/Policy/Policy';
 jest.mock('axios');
 
 
@@ -25,26 +24,24 @@ describe('AddOrder', () => {
 render(
       <Provider store={store}>
         <BrowserRouter>
-          <AddOrderGroup/>
+          <Policy/>
         </BrowserRouter>
       </Provider >
     );
   });
 
-
-  it('renders the Show Inventory button', () => {
-    expect(screen.getByRole('button', { name: "Order" })).toBeInTheDocument();
-  });
-
   it('renders the header', () => {
-    expect(screen.getByRole('heading',{level:2})).toBeInTheDocument();
+    expect(screen.getByRole('heading',{level:1})).toBeInTheDocument();
+  });
+  it('renders the header 1', () => {
+    expect(screen.getByRole('heading',{level:3})).toBeInTheDocument();
   });
 
   it('testing label from',()=>{ 
-    expect(screen.getByLabelText(/From Date/)).toBeInTheDocument();
+    expect(screen.getByText(/The maximum/)).toBeInTheDocument();
   });
 
   it('testing label to',()=>{ 
-    expect(screen.getByLabelText(/To Date/)).toBeInTheDocument();
+    expect(screen.getByText(/If the/)).toBeInTheDocument();
   });
 });

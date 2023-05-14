@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./AddProduct.css";
-import { log } from "console";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Message from "../Message/Message";
@@ -8,7 +7,7 @@ import Message from "../Message/Message";
 interface IItem {
   serialNumber: string;
   itemName: string;
-  condition: boolean; // true: works well, false: broken
+  condition: number; // true: works well, false: broken
   kind: string;
   // subItems: ISubItem[]
   subItems: string;
@@ -20,15 +19,16 @@ const AddProduct = () => {
   const [product, setProduct] = useState<IItem>({
     serialNumber: "",
     itemName: "",
-    kind: "",
-    condition: true,
+    kind: "Camera",
+    condition: 0,
     subItems: "",
   });
 
   const handleChange = (
-    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    event: any
   ) => {
     const { name, value } = event.target;
+    
     setProduct({ ...product, [name]: value });
   };
 
@@ -56,7 +56,7 @@ const AddProduct = () => {
     <div className="add-product">
       <Message wobble={wobble} setWobble={setWobble} />
       <label htmlFor="Kind">Kind:</label>
-      <select>
+      <select onChange={handleChange} name="kind" >
         <option value="Camera">Camera</option>
         <option value="Mic">Mic</option>
         <option value="Ipad">Ipad</option>
@@ -81,9 +81,9 @@ const AddProduct = () => {
       />
 
       <label htmlFor="condition">Condition:</label>
-      <select>
-        <option value="">True</option>
-        <option value="">False</option>
+      <select name="condition" onChange={handleChange}>
+        <option value={0}>OK</option>
+        <option value={1}>Fauly</option>
       </select>
       
       <button type="submit" onClick={handleSubmit}>

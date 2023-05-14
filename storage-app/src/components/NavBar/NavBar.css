@@ -1,12 +1,11 @@
 .container {
     display: flex;
     /* background: linear-gradient(0.25turn, RGB(41, 202, 220), RGB(1, 162, 215)); */
-    background-color: none;
+    background-color: #0000003a;
     justify-content: center;
     height: 50px;
     position: absolute;
     width: 100%;
-    margin-top: 7px;
     top: 0;
     z-index: 10;
   }
