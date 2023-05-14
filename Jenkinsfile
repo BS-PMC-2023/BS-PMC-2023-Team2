@@ -36,7 +36,11 @@ pipeline {
                     sh 'npm run test -- --coverage --watchAll'
                 }
             }
-            step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/*.xml'])
+                        post {
+                always {
+                    junit 'storage-app/target/surefire-reports/*.xml'
+                }
+            }
         }
         stage('Build and Deploy') {
 //             when {
