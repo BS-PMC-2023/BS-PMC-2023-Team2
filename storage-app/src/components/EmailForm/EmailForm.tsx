@@ -25,27 +25,27 @@ const EmailForm: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     // e.preventDefault();
 
-    // // Send the form data to the server-side endpoint
-    // fetch(emailEndpoint, {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify(formData)
-    // })
-    //   .then(response => {
-    //     if (response.ok) {
-    //       // Email sent successfully, perform any desired actions (e.g., show a success message)
-    //       console.log('Email sent successfully');
-    //     } else {
-    //       // Handle the error case (e.g., show an error message)
-    //       console.error('Failed to send email');
-    //     }
-    //   })
-    //   .catch(error => {
-    //     // Handle any network or server errors
-    //     console.error('Error occurred while sending the email:', error);
-    //   });
+    // Send the form data to the server-side endpoint
+    fetch("hay12el@gmail.com", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formData)
+    })
+      .then(response => {
+        if (response.ok) {
+          // Email sent successfully, perform any desired actions (e.g., show a success message)
+          console.log('Email sent successfully');
+        } else {
+          // Handle the error case (e.g., show an error message)
+          console.error('Failed to send email');
+        }
+      })
+      .catch(error => {
+        // Handle any network or server errors
+        console.error('Error occurred while sending the email:', error);
+      });
   };
 
   return (

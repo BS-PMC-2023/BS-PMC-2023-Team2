@@ -5,6 +5,16 @@ import Teacher from '../models/Teacher';
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { IStudent } from "../interfaces/interfaces";
+import nodemailer from 'nodemailer';
+
+const transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: 'hay12el@gmail.com',
+    pass: process.env.ep
+  }
+});
+
 
 const LOGIN = async (req: Request, res: Response, next: NextFunction) => {
   console.log(req.body);
@@ -131,4 +141,14 @@ const addStudentsByExcel = async (req: Request, res: Response) => {
   }
 };
 
-export { LOGIN, getPass, addStudentsByExcel };
+const sendEmailToAdmin = (req: Request, res: Response) => {
+  try{
+    console.log(req.body);
+    res.sendStatus(200);
+  }catch(err){
+    console.log(err);
+    res.sendStatus(404)
+  }
+}
+
+export { LOGIN, getPass, addStudentsByExcel, sendEmailToAdmin };
