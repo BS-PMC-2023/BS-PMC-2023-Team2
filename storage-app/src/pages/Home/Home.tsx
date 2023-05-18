@@ -3,6 +3,7 @@ import { useAppSelector } from "../../redux/Store";
 import { IUser } from "../../redux/userSlice";
 import "./home.css";
 import { Outlet, useNavigate } from "react-router-dom";
+import EmailForm from "../../components/EmailForm/EmailForm";
 
 const Home: FC = ({}) => {
   // @ts-ignore
@@ -40,6 +41,7 @@ const Home: FC = ({}) => {
         </div>
       </div>
       <Outlet />
+      <EmailForm />
     </div>
   );
 };
