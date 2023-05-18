@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './EmailForm.css'
+import axios from 'axios';
 
 interface EmailFormProps {
   emailEndpoint: string; // Server-side API endpoint to send the email
@@ -26,15 +27,10 @@ const EmailForm: React.FC = () => {
     // e.preventDefault();
 
     // Send the form data to the server-side endpoint
-    fetch("hay12el@gmail.com", {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(formData)
-    })
+    axios.post( `http://localhost:${process.env.REACT_APP_URL}/user/sendEmail`, 
+    formData)
       .then(response => {
-        if (response.ok) {
+        if (response) {
           // Email sent successfully, perform any desired actions (e.g., show a success message)
           console.log('Email sent successfully');
         } else {
