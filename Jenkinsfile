@@ -44,8 +44,7 @@ pipeline {
             steps {
                   dir('storage-app') {
                     sh 'ls'
-                    sh 'export CI=false'
-                    sh 'npm run build'
+                    sh 'CI=false npm run build'
                 }
             }
         }
