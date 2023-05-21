@@ -1,13 +1,3 @@
-// pipeline {
-//    agent any
-//    stages {
-//       stage('Hello') {
-//          steps {
-//             echo 'Hello World!'
-//          }
-//       }
-//    }
-// }
 
 pipeline {
     agent {
@@ -16,11 +6,6 @@ pipeline {
         }
     }
     stages {
-        // stage('Checkout') {
-        //     steps {
-        //         checkout([$class: 'GitSCM', branches: [[name: '*/master']], userRemoteConfigs: [[url: 'https://github.com/yourusername/your-nodejs-project.git']]])
-        //     }
-        // }
         stage('Install Dependencies') {            
             steps {
                 dir('storage-app') {
@@ -38,12 +23,10 @@ pipeline {
             }
         }
         stage('Build and Deploy') {
-//             when {
-//                 branch 'master'
-//             }
             steps {
-                dir('storage-app') {
-                sh 'npm run build'
+                  dir('storage-app') {
+                    sh 'ls'
+                    sh 'CI=false npm run build'
                 }
             }
         }
