@@ -134,9 +134,37 @@ const addStudentsByExcel = async (req: Request, res: Response) => {
 
 const sendEmailToAdmin = (req: Request, res: Response) => {
   try {
-  } catch (err) {
-  }
+    const { name, email, message } = req.body;
+    console.log(req.body);
 
+    const transporter = nodemailer.createTransport({
+      service: 'zoho',
+      auth: {
+        user: "sceproject@zohomail.com",
+        pass: "HE123456@",
+      },
+    });
+
+    const mailOptions = {
+      from: "sceproject@zohomail.com",
+      to: "sceproject@zohomail.com",
+      subject: " הודעה מ"+name,
+      text: `הודעה: ${message}\n  ${email}${" מייל לחזרה: "} `,
+    };
+    transporter.sendMail(mailOptions, function (error, info) {
+      if (error) {
+        console.error("Error occurred while sending the email:", error);
+        // res.sendStatus(404)
+      } else {
+        console.log("Email sent:", info.response);
+        // res.sendStatus(200);
+      }
+    });
+    res.sendStatus(200);
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(404);
+  }
 };
 
 export { LOGIN, getPass, addStudentsByExcel ,sendEmailToAdmin};
