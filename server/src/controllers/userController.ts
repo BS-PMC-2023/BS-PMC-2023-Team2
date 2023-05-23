@@ -133,7 +133,10 @@ const addStudentsByExcel = async (req: Request, res: Response) => {
 };
 
 const sendEmailToAdmin = (req: Request, res: Response) => {
-  
+  try {
+  } catch (err) {
+  }
+
 };
 
 export { LOGIN, getPass, addStudentsByExcel ,sendEmailToAdmin};
