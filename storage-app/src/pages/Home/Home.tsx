@@ -10,7 +10,7 @@ const Home: FC = ({}) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if(user.isAdmin != 'false') {
+    if(user.isAdmin !== 'false') {
       navigate('/admin');
     }
   }, [])

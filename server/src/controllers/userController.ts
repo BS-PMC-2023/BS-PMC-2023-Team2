@@ -5,6 +5,7 @@ import Teacher from '../models/Teacher';
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { IStudent } from "../interfaces/interfaces";
+import nodemailer from "nodemailer"
 
 const LOGIN = async (req: Request, res: Response, next: NextFunction) => {
   console.log(req.body);
@@ -131,4 +132,8 @@ const addStudentsByExcel = async (req: Request, res: Response) => {
   }
 };
 
-export { LOGIN, getPass, addStudentsByExcel };
+const sendEmailToAdmin = (req: Request, res: Response) => {
+  
+};
+
+export { LOGIN, getPass, addStudentsByExcel ,sendEmailToAdmin};
