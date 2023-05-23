@@ -1,6 +1,8 @@
 {
   "dependencies": {
+    "@types/cron": "^2.0.1",
     "@types/nodemailer": "^6.4.8",
+    "cron": "^2.3.0",
     "mongoose": "^7.0.4",
     "nodemailer": "^6.9.2"
   }
