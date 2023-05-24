@@ -1,5 +1,5 @@
 import { Router } from "express";
-import {LOGIN, getPass, addStudentsByExcel,sendEmailToAdmin} from '../controllers/userController'
+import {LOGIN, getPass, addStudentsByExcel, sendEmailToAdmin} from '../controllers/userController'
 
 const router = Router();
 
@@ -9,5 +9,6 @@ router.post('/addStudents', addStudentsByExcel)
 
 router.post('/getPass', getPass)
 
-router.post('/sendEmail',sendEmailToAdmin)
+router.post('/sendEmail', sendEmailToAdmin)
+
 export default router;

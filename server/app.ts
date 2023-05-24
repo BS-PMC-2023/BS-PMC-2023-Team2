@@ -6,6 +6,7 @@ import 'dotenv/config';
 import userRouter from './src/routers/userRouter'
 import orderRouter from './src/routers/orderRouter'
 import itemRouter from './src/routers/itemRouter'
+import './src/controllers/scheduledTasks'
 
 const app:express.Application = express();
 

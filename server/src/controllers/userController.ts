@@ -1,15 +1,15 @@
 import { Request, Response, NextFunction } from "express";
 import Admin from "../models/Admin";
 import Student from "../models/Student";
-import Teacher from '../models/Teacher';
+import Teacher from "../models/Teacher";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { IStudent } from "../interfaces/interfaces";
-import nodemailer from "nodemailer"
+import nodemailer from "nodemailer";
 
 const LOGIN = async (req: Request, res: Response, next: NextFunction) => {
   console.log(req.body);
-  
+
   const admin = await Admin.findOne({ sceName: req.body.sceName });
   if (!admin) {
     //not admin
@@ -23,26 +23,25 @@ const LOGIN = async (req: Request, res: Response, next: NextFunction) => {
       } else {
         //teacher
         const comparePassword = await bcrypt.compare(
-            req.body.password.toString(),
-            teacher.password
-          );
-          if (!comparePassword) {
-            res.status(404).send("invalid password!");
-          } else {
-            jwt.sign(
-              { _id: teacher._id , kind: "TEACHER"},
-              process.env.secretKey || "",
-              { expiresIn: "7 days" },
-              (err, token) => {
-                if (err) {
-                  res.sendStatus(403);
-                } else {
-                  res.json({ token: token, user: teacher }).sendStatus(200);
-                }
+          req.body.password.toString(),
+          teacher.password
+        );
+        if (!comparePassword) {
+          res.status(404).send("invalid password!");
+        } else {
+          jwt.sign(
+            { _id: teacher._id, kind: "TEACHER" },
+            process.env.secretKey || "",
+            { expiresIn: "7 days" },
+            (err, token) => {
+              if (err) {
+                res.sendStatus(403);
+              } else {
+                res.json({ token: token, user: teacher }).sendStatus(200);
               }
-            );
-          }
-
+            }
+          );
+        }
       }
     } else {
       //student
@@ -54,7 +53,7 @@ const LOGIN = async (req: Request, res: Response, next: NextFunction) => {
         res.status(404).send("invalid password!");
       } else {
         jwt.sign(
-          { _id: student._id , kind: "STUDENT"},
+          { _id: student._id, kind: "STUDENT" },
           process.env.secretKey || "",
           { expiresIn: "7 days" },
           (err, token) => {
@@ -94,40 +93,40 @@ const LOGIN = async (req: Request, res: Response, next: NextFunction) => {
 };
 
 const getPass = async (req: Request, res: Response) => {
-    const pass = await bcrypt.hash(req.body.pass.toString(), 10);
-    res.send(pass)
-}
-const getPas = async (toSctipt: string) => {    
-    const pass = await bcrypt.hash(toSctipt.toString(), 10);
-    return (pass)
-}
+  const pass = await bcrypt.hash(req.body.pass.toString(), 10);
+  res.send(pass);
+};
+const getPas = async (toSctipt: string) => {
+  const pass = await bcrypt.hash(toSctipt.toString(), 10);
+  return pass;
+};
 
 const addStudentsByExcel = async (req: Request, res: Response) => {
   try {
     const students = req.body.students;
 
-    if(!students){
+    if (!students) {
       throw new Error("error occurs");
     }
 
-    let arrayStudent: IStudent[] = []
+    let arrayStudent: IStudent[] = [];
     // @ts-ignore
-    for(let element:IStudent of students)  {
-    // students.forEach((element: IStudent) => {
+    for (let element: IStudent of students) {
+      // students.forEach((element: IStudent) => {
       element.password = await getPas(element.id);
       element.isAdmin = false;
       element.priority = 2;
 
       const student = new Student(element);
       console.log(student);
-      
+
       arrayStudent.push(student);
       await student.save();
-    };
+    }
     res.send(arrayStudent).status(200);
   } catch (err) {
     console.log(err);
-  
+
     res.sendStatus(404);
   }
 };
