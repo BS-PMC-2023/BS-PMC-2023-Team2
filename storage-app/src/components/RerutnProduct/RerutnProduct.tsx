@@ -37,6 +37,22 @@ const ReturnProduct: FC<ReturnProductProps> = ({}) => {
     getData();
   }, []);
   
+    const hundleClick = async () => {
+    if (!ok) {
+      alert("please check all th checkboxes!");
+    } else {
+      try {
+        await axios.post(
+          `http://localhost:${process.env.REACT_APP_URL}/order/StudentReturnItem`,
+          { itemToReturn }
+        );
+        window.location.reload();
+      } catch (error: any) {
+        console.log(error.message);
+      }
+    }
+  };
+  
   return (
   );
 };
