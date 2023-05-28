@@ -5,11 +5,11 @@ import userEvent from '@testing-library/user-event';
 import { Provider } from "react-redux";
 import { store } from "../redux/Store";
 import axios from 'axios';
-import Admin from '../pages/Admin/Admin';
+import Teacher from '../pages/Teacher/Teacher';
 jest.mock('axios');
 
 
-describe('Admin', () => {
+describe('Error', () => {
   beforeEach(() => {
     (axios.post as jest.Mock).mockResolvedValue({
       data: {
@@ -23,8 +23,8 @@ describe('Admin', () => {
 
 render(
       <Provider store={store}>
-        <BrowserRouter>
-            <Admin/>
+        <BrowserRouter>a
+            <Teacher/>
         </BrowserRouter>
       </Provider >
     );
@@ -32,12 +32,9 @@ render(
 
 
  
-  it('renders the header', () => {
-    expect(screen.getByRole('heading',{level:1})).toBeInTheDocument();
-  });
+    it('renders the header', () => {
+        expect(screen.getByRole('heading',{level:1})).toBeInTheDocument();
+        }
+    );
 
-  it('testing text',()=>{ 
-    expect(screen.getByText(/Admin/)).toBeInTheDocument();
-  });
 });
-

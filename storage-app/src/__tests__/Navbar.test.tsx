@@ -42,4 +42,5 @@ describe('Navbar', () => {
     userEvent.click(screen.getByRole('button', { name: 'Log Out' }));
     await waitFor(() => expect(mockNavigate).toHaveBeenCalledWith('/'));
   });
+
 });

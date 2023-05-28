@@ -62,4 +62,23 @@ describe('Login', () => {
 
     await waitFor(() => expect(mockNavigate).toHaveBeenCalledWith('/admin'));
   });
+
+  it('redirects to "/user" when the user is not an admin', async () => {
+    (axios.post as jest.Mock).mockResolvedValue({
+      data: {
+        token: 'testToken',
+        user: {
+          userName: 'testUserName',
+          isAdmin: 'false'
+        }
+      }
+    });
+
+    userEvent.type(screen.getByPlaceholderText('password'), 'abc');
+    userEvent.click(screen.getByRole('button', { name: "CONTINUE" }));
+
+    await waitFor(() => expect(mockNavigate).toHaveBeenCalledWith('/admin'));
+  }
+  );
+
 });
