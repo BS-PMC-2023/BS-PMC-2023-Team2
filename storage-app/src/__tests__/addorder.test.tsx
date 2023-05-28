@@ -61,4 +61,36 @@ describe('AddOrder', () => {
       expect(mockNavigate).toHaveBeenCalledWith('/Student/studentGetOrders');
     });
   });
+
+  it('renders the header', () => {
+    expect(screen.getByRole('heading', { level: 2 })).toBeInTheDocument();
+  }
+  );
+
+  it('renders the Submit button', () => {
+    expect(screen.getByRole('button', { name: "Check Avilability" })).toBeInTheDocument();
+  }
+  );
+
+  it('renders the Submit button', () => {
+    expect(screen.getByRole('button', { name: "Enter To Waiting list 📋" })).toBeInTheDocument();
+  }
+  );
+
+  //labels
+  it('testing label from', () => {
+    expect(screen.getByLabelText(/From/)).toBeInTheDocument();
+  }
+  );
+
+  it('testing label to', () => {
+    expect(screen.getByLabelText(/To/)).toBeInTheDocument();
+  }
+  );
+
+  //text
+  it('testing text from', () => {
+    expect(screen.getByText(/find/)).toBeInTheDocument();
+  }
+  );
 });

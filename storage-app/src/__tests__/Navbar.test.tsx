@@ -43,4 +43,11 @@ describe('Navbar', () => {
     await waitFor(() => expect(mockNavigate).toHaveBeenCalledWith('/'));
   });
 
+  //button
+  it('renders the "Log Out" button', () => {
+    expect(screen.getByRole('button', { name: 'Log Out' })).toBeInTheDocument();
+  }
+  );
+
+
 });

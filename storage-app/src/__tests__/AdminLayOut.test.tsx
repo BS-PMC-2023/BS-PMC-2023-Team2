@@ -46,4 +46,5 @@ render(
     expect(screen.getByText(/display Faulty Products/)).toBeInTheDocument();
   });
 
+
 });
