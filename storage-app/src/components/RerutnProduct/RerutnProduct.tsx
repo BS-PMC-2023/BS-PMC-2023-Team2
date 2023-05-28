@@ -17,6 +17,26 @@ const ReturnProduct: FC<ReturnProductProps> = ({}) => {
   const [itemToReturn, setItemToReturn] = useState<itmPrsv>();
   const [reservations, setReservations] = useState<[]>();
   const [ok, setOk] = useState<boolean>(false);
+  
+    useEffect(() => {
+    const getData = async () => {
+      try {
+        const data = await axios.get(
+          `http://localhost:${process.env.REACT_APP_URL}/order/studentGetOrders`,
+          {
+            headers: {
+              token: user.token,
+            },
+          }
+        );
+        setReservations(data.data.resWithItems);
+      } catch (error: any) {
+        console.log(error.message);
+      }
+    };
+    getData();
+  }, []);
+  
   return (
   );
 };
