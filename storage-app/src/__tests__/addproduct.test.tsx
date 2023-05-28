@@ -66,4 +66,5 @@ describe('AddProduct', () => {
 
     await waitFor(() => expect(mockNavigate).toHaveBeenCalledWith('/'));
   });
+
 });

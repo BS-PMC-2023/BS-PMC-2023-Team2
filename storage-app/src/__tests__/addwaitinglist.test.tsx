@@ -65,4 +65,10 @@ render(
   it('redirects to "/admin" when the user is an admin', async () => {
     userEvent.click(screen.getByRole('button', { name: "Submit" }));
   });
+
+  it('renders the header', () => {
+    expect(screen.getByRole('heading',{level:2})).toBeInTheDocument();
+  }
+  );
+
 });

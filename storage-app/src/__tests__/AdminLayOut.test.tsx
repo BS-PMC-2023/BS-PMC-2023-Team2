@@ -45,4 +45,5 @@ render(
   it('testing text',()=>{ 
     expect(screen.getByText(/display Faulty Products/)).toBeInTheDocument();
   });
+
 });
