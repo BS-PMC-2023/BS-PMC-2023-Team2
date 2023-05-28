@@ -47,8 +47,16 @@ pipeline {
         }
         stage('Derived Measures') {
              steps {
-                echo 'Check in SPMP'
-            }
+                script {
+                    def defect_failures = 14
+                    def performed_test_cases = 34
+                    
+                    def derives_measures = defect_failures / performed_test_cases
+                    
+                    echo "Number of defect failures: ${defect_failures}"
+                    echo "Number of performed test cases: ${performed_test_cases}"
+                    echo "Derives Measures: ${derives_measures}"
+                }
         }
         stage('System Usability Scale') {
              steps {
