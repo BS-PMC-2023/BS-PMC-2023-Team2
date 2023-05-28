@@ -1,12 +1,13 @@
-import React, { FC, useRef, useState } from 'react'
+import React, { FC, useRef, useState, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
-import { useAppDispatch } from "../../redux/Store";
+import { useAppDispatch, useAppSelector } from "../../redux/Store";
 import axios from "axios";
 import { LOGIN } from "../../redux/userSlice";
 import "./LogIn.css";
 
 const LogIn : FC= () => {
     const dispatch = useAppDispatch();
+    const user = useAppSelector(state => state.user)
     const navigate = useNavigate();
     const params = useParams();
     const userParams = useRef({
@@ -29,6 +30,19 @@ const LogIn : FC= () => {
       //@ts-ignore
       userParams.current[e.target.id] = e.target.value;
     };
+
+    //Check if there is user logged in
+    useEffect(()=> {
+      if(user.token){    
+        if(user.isAdmin == 'true'){
+          console.log("admin");
+          navigate('/Admin') 
+        }else{
+          console.log("student");
+          navigate('/Student')
+        }
+      }
+    }, [])
   
   
     const handleSubmit = async () => {
@@ -60,7 +74,7 @@ const LogIn : FC= () => {
           if(res.data.user.isAdmin){
             navigate("/admin");
           }else{//not admin
-            navigate("/");
+            navigate("/student");
           }
       } catch (err) {
         console.log(err);
