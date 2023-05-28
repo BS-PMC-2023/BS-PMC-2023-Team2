@@ -4,10 +4,11 @@ import { IUser } from "../../redux/userSlice";
 import "./home.css";
 import { Outlet, useNavigate } from "react-router-dom";
 import EmailForm from "../../components/EmailForm/EmailForm";
+import { useSelector } from "react-redux";
 
 const Home: FC = ({}) => {
   // @ts-ignore
-  const user: IUser = useAppSelector((state) => state.user);
+  const user: IUser = useSelector((state:any) => state.user);
   const navigate = useNavigate();
 
   useEffect(() => {
