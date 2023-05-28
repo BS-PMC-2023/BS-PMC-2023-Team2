@@ -35,10 +35,9 @@ const StudentOrders: FC = ({}) => {
           <table className="table-fill">
             <thead>
               <tr>
-                <th className="text-left">Item Name</th>
                 <th className="text-left">Kind</th>
-                <th className="text-left">Serial Number</th>
-                <th className="text-left">Condition</th>
+                <th className="text-left">from date</th>
+                <th className="text-left">to date</th>
               </tr>
             </thead>
             {orders && (
