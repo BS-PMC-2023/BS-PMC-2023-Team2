@@ -36,6 +36,12 @@ const Home: FC = ({}) => {
                 >
                   Your Orders
                 </span>
+                <span
+                  className="btnOrange"
+                  onClick={() => navigate("/Student/ReturnProduct")}
+                >
+                  Return Product
+                </span>
               </>
           </div>
         </div>
