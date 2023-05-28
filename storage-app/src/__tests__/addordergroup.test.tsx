@@ -47,4 +47,13 @@ render(
   it('testing label to',()=>{ 
     expect(screen.getByLabelText(/To Date/)).toBeInTheDocument();
   });
+
+  it('testing label Order Manager',()=>{ 
+    expect(screen.getByLabelText(/Order Manager/)).toBeInTheDocument();
+  });
+
+  it('testing label Group Members',()=>{ 
+    expect(screen.getByLabelText(/Group Members/)).toBeInTheDocument();
+  });
+
 });

@@ -33,4 +33,22 @@ render(
     expect(screen.queryByLabelText('test')).toBeNull();
   });
 
+  //test header
+  it('testing header',()=>{
+    expect(screen.getByRole('heading',{level:2})).toBeInTheDocument();
+  }
+  );
+
+  //get by text
+  it('testing text',()=>{
+    expect(screen.getByText(/select/)).toBeInTheDocument();
+  }
+  );
+
+  //get by text
+  it('testing text',()=>{
+    expect(screen.getByText(/file/)).toBeInTheDocument();
+  }
+  );
+
 });
