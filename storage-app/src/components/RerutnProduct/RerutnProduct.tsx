@@ -95,7 +95,20 @@ const ReturnProduct: FC<ReturnProductProps> = ({}) => {
           </div>
         </div>
       </div>
-      
+      {itemToReturn && (
+        <div className="choosenItemcheck">
+          <div className="ci">
+            <h4>Chosen Item To Return:</h4>
+            <div className="row center">
+              <p>{itemToReturn.itm.kind}, </p>
+              <p>{itemToReturn.itm.itemName}, </p>
+              <p>{itemToReturn.itm.serialNumber}</p>
+            </div>
+          </div>
+          <CheckList setOk={setOk} />
+          <button onClick={hundleClick}>Return Item</button>
+        </div>
+      )}
     </div>
   );
 };
