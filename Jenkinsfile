@@ -29,7 +29,15 @@ pipeline {
                 }
             }
         }
-        stage('Run Tests') {
+        stage('Run Unit Tests') {
+             steps {
+                dir('storage-app') {
+                    sh 'ls'
+                    sh 'npm test'
+                }
+            }
+        }
+        stage('Unit Tests Coverage') {
              steps {
                 dir('storage-app') {
                     sh 'ls'
