@@ -16,13 +16,15 @@ import FoultyItems from "../components/FoultyItems/FoultyItems";
 import Summery from "../components/Summery/Summery";
 import ManageOrders from "../components/ManageOrders/ManageOrders";
 import StudentOrders from "../components/StudentsOrders/StudentOrders";
+import ReturnProduct from "../components/RerutnProduct/ReturnProduct";
 
 const MainRouter: FC = ({}) => {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<MainPage />}>
-          <Route index element={<Home />} />
+          {/* <Route  element={<Home />} /> */}
+          <Route index element={<LogIn />} />
           <Route path="/loginsignup/:is" element={<LogIn />} />
           <Route path="Student" element={<Home />}>
             <Route
@@ -30,6 +32,7 @@ const MainRouter: FC = ({}) => {
               element={<StudentOrders />}
             />
             <Route path="AddOrder" element={<AddOrder />} />
+            <Route path="ReturnProduct" element={<ReturnProduct />} />
             <Route path="AddOrderGroup" element={<AddOrderGroup />} />
           </Route>
           <Route path="/Teacher" element={<Teacher />} />
