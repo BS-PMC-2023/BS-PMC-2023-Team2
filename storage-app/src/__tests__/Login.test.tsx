@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom';
-import { BrowserRouter } from "react-router-dom";
-import { render, screen, waitFor} from '@testing-library/react';
+import { BrowserRouter, useNavigate } from "react-router-dom";
+import { render, screen, waitFor } from '@testing-library/react';
 import LogIn from '../pages/LogIn/LogIn';
 import userEvent from '@testing-library/user-event';
 import { Provider } from "react-redux";
@@ -8,6 +8,13 @@ import { store } from "../redux/Store";
 import axios from 'axios';
 
 jest.mock('axios');
+
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'), // Preserve other exported functions and objects
+  useNavigate: jest.fn(),
+}));
+
+const mockNavigate = jest.fn();
 
 describe('Login', () => {
   beforeEach(() => {
@@ -21,7 +28,9 @@ describe('Login', () => {
       }
     });
 
-render(
+    (useNavigate as jest.Mock).mockReturnValue(mockNavigate);
+
+    render(
       <Provider store={store}>
         <BrowserRouter>
           <LogIn />
@@ -51,6 +60,6 @@ render(
     userEvent.type(screen.getByPlaceholderText('password'), 'abc');
     userEvent.click(screen.getByRole('button', { name: "CONTINUE" }));
 
-    await waitFor(() => expect(location.pathname).toBe('/admin'));
+    await waitFor(() => expect(mockNavigate).toHaveBeenCalledWith('/admin'));
   });
 });

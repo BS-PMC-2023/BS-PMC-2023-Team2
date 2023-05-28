@@ -7,6 +7,7 @@ import "./AddOrder.css";
 import { IItem } from "../../interfaces/interfaces";
 import { log } from "console";
 import { useSelector } from "react-redux";
+import { RootState } from "../../redux/userSlice";
 import { useAppSelector } from "../../redux/Store";
 interface Order {
   type: string;
@@ -15,7 +16,7 @@ interface Order {
 }
 
 const AddOrder: React.FC = () => {
-  const user = useAppSelector(state => state.user)
+  const user = useSelector((state: RootState) => state.user);
   const navigate = useNavigate();
   const [wobble, setWobble] = useState(0);
   const [AvilabilityP, setAvilabilityP] = useState<IItem[]>([]);
@@ -56,9 +57,11 @@ const AddOrder: React.FC = () => {
       }
       const order = await axios.post(`http://localhost:${process.env.REACT_APP_URL}/order/makeOrder`, {
         obj
-      }, { headers: {
-        token: user.token
-      }})
+      }, {
+        headers: {
+          token: user.token
+        }
+      })
       alert("The Order Has Received 👍🏼")
       navigate('/Student/studentGetOrders')
     } catch (error: any) {
@@ -117,7 +120,7 @@ const AddOrder: React.FC = () => {
         <span className="prodMap">
           {AvilabilityP &&
             AvilabilityP.map((prod) => (
-              <div className="prodCont" onClick={() => handleOrder(prod)}>
+              <div className="prodCont" data-testid={prod.itemName} onClick={() => handleOrder(prod)}>
                 <p>{prod.kind}</p>
                 <p>{prod.itemName}</p>
               </div>

@@ -3,9 +3,9 @@ import "./StudentOrders.css";
 import axios from "axios";
 import { useSelector } from "react-redux";
 
-const StudentOrders: FC = ({}) => {
+const StudentOrders: FC = ({ }) => {
   const user = useSelector((state: any) => state.user);
-  const [orders, setOrders] = useState<[]>();
+  const [orders, setOrders] = useState<any>();
   const [reservations, setreservations] = useState<[]>();
 
   useEffect(() => {
@@ -19,7 +19,7 @@ const StudentOrders: FC = ({}) => {
             },
           }
         );
-        console.log(data.data);
+        setOrders(data);
       } catch (error: any) {
         console.log(error.message);
       }
@@ -59,7 +59,7 @@ const StudentOrders: FC = ({}) => {
         </div>
       </div>
       <div className="inventory-summary">
-            <h1>Your Reservations:</h1>
+        <h1>Your Reservations:</h1>
         <div className="col">
           <table className="table-fill">
             <thead>

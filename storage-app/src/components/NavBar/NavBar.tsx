@@ -1,13 +1,15 @@
 import { useNavigate } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../../redux/Store";
+import { useAppDispatch } from "../../redux/Store";
 import { LOGOUT } from "../../redux/userSlice";
 import React from "react";
 import "./NavBar.css";
+import { useSelector } from "react-redux";
+import { RootState } from "../../redux/userSlice";
 import logo from "../../Imeges/logoSCE.png"
 
 
 const NavBar = () => {
-  const user = useAppSelector((state) => state.user);
+  const user = useSelector((state: RootState) => state.user);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
@@ -16,7 +18,7 @@ const NavBar = () => {
     navigate("/");
   };
 
-  const handleClick = (e:any) => {
+  const handleClick = (e: any) => {
     navigate(`loginsignup/${e.target.id}`);
   };
 

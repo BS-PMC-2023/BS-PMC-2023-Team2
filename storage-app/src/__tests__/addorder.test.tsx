@@ -1,50 +1,64 @@
 import '@testing-library/jest-dom';
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, useNavigate } from "react-router-dom";
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { Provider } from "react-redux";
 import { store } from "../redux/Store";
 import axios from 'axios';
 import AddOrder from '../components/AddOrder/AddOrder';
-import AddOrderGroup from '../components/AddOrderGroup/AddOrderGroup';
+
 jest.mock('axios');
 
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'), // Preserve other exported functions and objects
+  useNavigate: jest.fn(),
+}));
+
+const mockNavigate = jest.fn();
+
+const items = [
+  {
+    itemName: 'Test item name 1',
+    kind: 'Camera',
+    serialNumber: 'Test serial number 1',
+    condition: true
+  },
+  {
+    itemName: 'Test item name 2',
+    kind: 'Mic',
+    serialNumber: 'Test serial number 2',
+    condition: false
+  }
+];
 
 describe('AddOrder', () => {
   beforeEach(() => {
-    (axios.post as jest.Mock).mockResolvedValue({
-      data: {
-        token: 'testToken',
-        user: {
-          userName: 'testUserName',
-          isAdmin: 'true'
-        }
-      }
+    (axios.get as jest.Mock).mockResolvedValue({
+      data: { items: items }
     });
 
-render(
+    (axios.post as jest.Mock).mockResolvedValue({
+      data: {}
+    });
+
+    (useNavigate as jest.Mock).mockReturnValue(mockNavigate);
+
+    render(
       <Provider store={store}>
         <BrowserRouter>
-          <AddOrderGroup/>
+          <AddOrder />
         </BrowserRouter>
       </Provider >
     );
   });
 
 
-  it('renders the Show Inventory button', () => {
-    expect(screen.getByRole('button', { name: "Order" })).toBeInTheDocument();
-  });
+  it('adds the order correctly', async () => {
+    userEvent.click(screen.getByRole('button', { name: "Check Avilability" }));
 
-  it('renders the header', () => {
-    expect(screen.getByRole('heading',{level:2})).toBeInTheDocument();
-  });
-
-  it('testing label from',()=>{ 
-    expect(screen.getByLabelText(/From Date/)).toBeInTheDocument();
-  });
-
-  it('testing label to',()=>{ 
-    expect(screen.getByLabelText(/To Date/)).toBeInTheDocument();
+    await waitFor(() => {
+      userEvent.click(screen.getByTestId(items[0].itemName));
+      expect(mockNavigate).toHaveBeenCalledWith('/Student/studentGetOrders');
+    });
   });
 });
