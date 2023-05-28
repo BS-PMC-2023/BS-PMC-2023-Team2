@@ -48,6 +48,8 @@ describe('Navbar', () => {
     expect(screen.getByRole('button', { name: 'Log Out' })).toBeInTheDocument();
   }
   );
-
+  it('checks for non existing text label', () => {
+    expect(screen.queryByLabelText('test')).toBeNull();
+  });
 
 });
