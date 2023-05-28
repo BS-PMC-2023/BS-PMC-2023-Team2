@@ -13,6 +13,10 @@ interface itmPrsv {
 
 
 const ReturnProduct: FC<ReturnProductProps> = ({}) => {
+  const user = useSelector((state: any) => state.user);
+  const [itemToReturn, setItemToReturn] = useState<itmPrsv>();
+  const [reservations, setReservations] = useState<[]>();
+  const [ok, setOk] = useState<boolean>(false);
   return (
   );
 };
