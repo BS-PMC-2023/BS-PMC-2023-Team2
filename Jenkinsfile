@@ -45,6 +45,32 @@ pipeline {
                 }
             }
         }
+        stage('Run Integration Tests') {
+             steps {
+                dir('storage-app') {
+                    sh 'ls'
+                    sh 'npm test'
+                }
+            }
+        }
+        stage('Integration Tests Coverage') {
+             steps {
+                dir('storage-app') {
+                    sh 'ls'
+                    sh 'npm test -- --coverage'
+                }
+            }
+        }
+        stage('Derived Measures') {
+             steps {
+                
+            }
+        }
+        stage('System Usability Scale') {
+             steps {
+                
+            }
+        }
         stage('Build and Deploy') {
 //             when {
 //                 branch 'master'
