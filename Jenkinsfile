@@ -68,7 +68,6 @@ pipeline {
             steps {
                   dir('storage-app') {
                     sh 'ls'
-                    sh 'npm install -g npm@9.6.7' 
                     sh 'CI=false npm run build'
                 }
             }
