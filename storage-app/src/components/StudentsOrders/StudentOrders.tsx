@@ -19,7 +19,8 @@ const StudentOrders: FC = ({}) => {
             },
           }
         );
-        console.log(data.data);
+        setOrders(data.data.orders);
+        setreservations(data.data.resWithItems);
       } catch (error: any) {
         console.log(error.message);
       }
@@ -35,22 +36,18 @@ const StudentOrders: FC = ({}) => {
           <table className="table-fill">
             <thead>
               <tr>
-                <th className="text-left">Item Name</th>
                 <th className="text-left">Kind</th>
-                <th className="text-left">Serial Number</th>
-                <th className="text-left">Condition</th>
+                <th className="text-left">from date</th>
+                <th className="text-left">to date</th>
               </tr>
             </thead>
-            {orders && (
+           {orders && (
               <tbody className="table-hover">
                 {orders.map((item: any) => (
-                  <tr key={item.serialNumber}>
+                  <tr key={item._id}>
                     <td className="text-left">{item.itemName}</td>
-                    <td className="text-left">{item.kind}</td>
-                    <td className="text-left">{item.serialNumber}</td>
-                    <td className="text-left">
-                      {item.condition ? "OK" : "Fauly"}
-                    </td>
+                    <td className="text-left">{item.DateFrom.split("T")[0]}</td>
+                    <td className="text-left">{item.DateTo.split("T")[0]}</td>
                   </tr>
                 ))}
               </tbody>
@@ -59,7 +56,7 @@ const StudentOrders: FC = ({}) => {
         </div>
       </div>
       <div className="inventory-summary">
-            <h1>Your Reservations:</h1>
+           <h1>Your Reservations:</h1>
         <div className="col">
           <table className="table-fill">
             <thead>
@@ -67,18 +64,18 @@ const StudentOrders: FC = ({}) => {
                 <th className="text-left">Item Name</th>
                 <th className="text-left">Kind</th>
                 <th className="text-left">Serial Number</th>
-                <th className="text-left">Condition</th>
+                <th className="text-left">Return Date</th>
               </tr>
             </thead>
             {reservations && (
               <tbody className="table-hover">
                 {reservations.map((item: any) => (
-                  <tr key={item.serialNumber}>
-                    <td className="text-left">{item.itemName}</td>
-                    <td className="text-left">{item.kind}</td>
-                    <td className="text-left">{item.serialNumber}</td>
+                  <tr key={item.itm.serialNumber}>
+                    <td className="text-left">{item.itm.itemName}</td>
+                    <td className="text-left">{item.itm.kind}</td>
+                    <td className="text-left">{item.itm.serialNumber}</td>
                     <td className="text-left">
-                      {item.condition ? "OK" : "Fauly"}
+                      {item.rsv.DateTo.split('T')[0]}
                     </td>
                   </tr>
                 ))}
