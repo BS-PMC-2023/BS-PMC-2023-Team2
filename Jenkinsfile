@@ -57,6 +57,7 @@ pipeline {
                     echo "Number of performed test cases: ${performed_test_cases}"
                     echo "Derives Measures: ${derives_measures}"
                 }
+            }
         }
         stage('System Usability Scale') {
              steps {
