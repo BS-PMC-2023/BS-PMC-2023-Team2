@@ -93,4 +93,16 @@ describe('AddOrder', () => {
     expect(screen.getByText(/find/)).toBeInTheDocument();
   }
   );
+  it('testing label Group Members',()=>{ 
+    expect(screen.getByRole('option', { name: 'Camera' })).toBeInTheDocument();
+  });
+  it('testing label Group Members',()=>{ 
+    expect(screen.getByRole('option', { name: 'Mic' })).toBeInTheDocument();
+  });
+  it('testing label Group Members',()=>{ 
+    expect(screen.getByRole('option', { name: 'Ipad' })).toBeInTheDocument();
+  });
+  it('testing label Group Members',()=>{ 
+    expect(screen.getByRole('option', { name: 'Tripod' })).toBeInTheDocument();
+  });
 });
