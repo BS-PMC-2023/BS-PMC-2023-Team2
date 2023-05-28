@@ -6,6 +6,7 @@ import './MainPage.css'
 const MainPage = () => {
   return (
     <div className='MainPage'>
+      <h1>SCE</h1>
       <NavBar />
       <Outlet />
     </div>
