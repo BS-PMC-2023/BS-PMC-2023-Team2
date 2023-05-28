@@ -7,7 +7,7 @@ import "./AddOrder.css";
 import { IItem } from "../../interfaces/interfaces";
 import { log } from "console";
 import { useSelector } from "react-redux";
-import { RootState } from "../../redux/userSlice";
+//import { RootState } from "../../redux/userSlice";
 import { useAppSelector } from "../../redux/Store";
 interface Order {
   type: string;
@@ -16,7 +16,7 @@ interface Order {
 }
 
 const AddOrder: React.FC = () => {
-  const user = useSelector((state: RootState) => state.user);
+  const user = useSelector((state: any) => state.user);
   const navigate = useNavigate();
   const [wobble, setWobble] = useState(0);
   const [AvilabilityP, setAvilabilityP] = useState<IItem[]>([]);

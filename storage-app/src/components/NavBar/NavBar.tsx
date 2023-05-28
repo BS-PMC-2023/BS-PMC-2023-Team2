@@ -4,12 +4,12 @@ import { LOGOUT } from "../../redux/userSlice";
 import React from "react";
 import "./NavBar.css";
 import { useSelector } from "react-redux";
-import { RootState } from "../../redux/userSlice";
+//import { RootState } from "../../redux/userSlice";
 import logo from "../../Imeges/logoSCE.png"
 
 
 const NavBar = () => {
-  const user = useSelector((state: RootState) => state.user);
+  const user = useSelector((state: any) => state.user);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 

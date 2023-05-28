@@ -9,7 +9,7 @@ import FoultyItems from '../../components/FoultyItems/FoultyItems';
 const Admin = () => {
   return (
     <div className="Box">
-      
+      <h1>Admin</h1>
     </div>
   )
 }
