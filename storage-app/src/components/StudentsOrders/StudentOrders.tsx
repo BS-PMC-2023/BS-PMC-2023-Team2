@@ -19,7 +19,6 @@ const StudentOrders: FC = ({}) => {
             },
           }
         );
-        console.log(data.data);
         setOrders(data.data.orders);
         setreservations(data.data.resWithItems);
       } catch (error: any) {
@@ -42,7 +41,7 @@ const StudentOrders: FC = ({}) => {
                 <th className="text-left">to date</th>
               </tr>
             </thead>
-            {orders && (
+           {orders && (
               <tbody className="table-hover">
                 {orders.map((item: any) => (
                   <tr key={item._id}>
@@ -57,7 +56,7 @@ const StudentOrders: FC = ({}) => {
         </div>
       </div>
       <div className="inventory-summary">
-        <h1>Your Reservations:</h1>
+           <h1>Your Reservations:</h1>
         <div className="col">
           <table className="table-fill">
             <thead>
