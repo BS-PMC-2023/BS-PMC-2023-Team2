@@ -32,12 +32,12 @@ const AdminLayout: FC = ({}) => {
             <span className="btnOrange" onClick={() => navigate("/Admin/Exl")}>
               add Students
             </span>
-            <span
+            {/* <span
               className="btnOrange"
               onClick={() => navigate("/Admin/AddProducts")}
             >
               display All Products
-            </span>
+            </span> */}
             <span
               className="btnOrange"
               onClick={() => navigate("/Admin/summery")}
