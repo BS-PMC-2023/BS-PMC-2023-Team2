@@ -11,6 +11,7 @@ type ChecklistItem = {
   checked: boolean;
 };
 
+
 const CheckList: FC<CheckListProps> = ({ setOk }) => {
   const [checkedItems, setCheckedItems] = useState<string[]>([]);
 
