@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import {makeOrder, confirmOrder, enterToWaitingList, AdminGetOrders, studentGetOrders} from '../controllers/orderController'
+import {makeOrder, confirmOrder, enterToWaitingList, AdminGetOrders, studentGetOrders, StudentReturnItem} from '../controllers/orderController'
 import verifyToken from '../middleware/verifyToken'
 
 
@@ -10,6 +10,7 @@ router.post('/confirmOrder', verifyToken, confirmOrder)
 router.post('/enterToWaitingList', verifyToken, enterToWaitingList)
 router.get('/AdminGetOrders', AdminGetOrders)
 router.get('/studentGetOrders', verifyToken ,studentGetOrders)
+router.post('/StudentReturnItem', StudentReturnItem);
 
 
 export default router;

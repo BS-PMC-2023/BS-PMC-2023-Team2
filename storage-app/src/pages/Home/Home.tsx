@@ -4,6 +4,7 @@ import { IUser } from "../../redux/userSlice";
 import "./home.css";
 import { Outlet, useNavigate } from "react-router-dom";
 import EmailForm from "../../components/EmailForm/EmailForm";
+import CheckList from "../../components/CheckList/CheckList";
 
 const Home: FC = ({}) => {
   // @ts-ignore
@@ -35,6 +36,12 @@ const Home: FC = ({}) => {
                   onClick={() => navigate("/Student/studentGetOrders")}
                 >
                   Your Orders
+                </span>
+                <span
+                  className="btnOrange"
+                  onClick={() => navigate("/Student/ReturnProduct")}
+                >
+                  Return Product
                 </span>
               </>
           </div>

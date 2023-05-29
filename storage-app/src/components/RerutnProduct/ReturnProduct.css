@@ -1,0 +1,53 @@
+.ReturnCont{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    width: 100%;
+    background-color: #fff;
+    padding-bottom: 20px;
+}
+
+.headerR{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #d6d6d6;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.choosenItemcheck {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.row{
+    flex-direction: row;
+    grid: 20px;
+}
+.headerR1{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    justify-content: center;
+    align-items: center;
+    background-color: #d6d6d6;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 1.4rem;
+    font-weight: 600;
+}
